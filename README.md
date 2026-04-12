@@ -1,59 +1,23 @@
-<p align="center"><img src="icon.png"/></p>
 
-# Starter Kit City Builder
 
-This package includes a basic template for a 3D city builder in Godot 4.6. Includes features like;
+# 🧲FishingForAFight
 
-- Building and removing structures
-- Smooth camera controls
-- Dynamic MeshLibrary creation
-- Saving/loading
-- Sprites and 3D Models _(CC0 licensed)_
+Auto-battler/management game where you assemble an underground robot fight ring from scraps you magnet fish from a sea of scrap
 
-### Screenshot
 
-<p align="center"><img src="screenshots/screenshot.png"/></p>
 
-### Controls
+## Controls
 
 | Key | Command |
 | --- | --- |
-| <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> | Move camera |
-| <kbd>F</kbd> | Camera to center |
-| <kbd>Middle mouse button</kbd> | Hold to rotate camera |
-| <kbd>Scroll wheel</kbd> | Zoom |
-| <kbd>Left mouse button</kbd> | Place building |
-| <kbd>DEL</kbd> | Remove building |
-| <kbd>Right mouse button</kbd> | Rotate building |
-| <kbd>Q</kbd> <kbd>E</kbd>  | Toggle between buildings |
-| <kbd>F1</kbd> | Save |
-| <kbd>F2</kbd> | Load |
+| <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> | Move ship |
+| <kbd>Space</kbd> | Toggle magnet |
 
-### Instructions
 
-#### 1. How to add more buildings?
 
-Duplicate one of the existing resources in the 'structures' folder, adjust the properties in the inspector. Select the 'Builder' node in the scene and add your new resources to the 'Structures' array.
 
-#### 2. How to adjust building models?
-
-Select the resource of the building you'd like to change in the 'structures' folder, adjust the model in the inspector.
-
-#### 3. How to save and load cities?
-
-Pressing F1 during gameplay will save the current city to disk, F2 will load it from the same location. The file is saved as 'map.res' in the user folder (see below). You can adjust this in the 'action_save' and 'action_load' functions found in the 'builder.gd' script.
-
-User data folder:
-
-> Windows: `%APPDATA%/Godot/app_userdata/Starter Kit City Builder/`
-
-> Linux: `~/.local/share/godot/app_userdata/Starter Kit City Builder/`
-
-> MacOS: `~/Library/Application Support/Godot/app_userdata/Starter Kit City Builder/`
-
-#### 4. How to include city data in the project and load this?
-
-You'll find a sample map in the 'sample map' folder, to load this during gameplay press F3. You can find the function that handles this as 'action_load_resources' found in the 'builder.gd' script.
+### Thanks
+Uses KenneyNLs city builder starter pack as the base for the prototype
 
 ### License
 
