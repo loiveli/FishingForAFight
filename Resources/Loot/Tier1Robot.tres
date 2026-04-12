@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Loot" format=3 uid="uid://c6esdx8fvkq2m"]
+
+[ext_resource type="Script" uid="uid://v8frponxyegr" path="res://scripts/Loot.gd" id="1_hnn82"]
+[ext_resource type="Texture2D" uid="uid://clrjmfbyjmj8l" path="res://sprites/robots/thinker.jpg" id="2_5drqg"]
+
+[resource]
+script = ExtResource("1_hnn82")
+texture = ExtResource("2_5drqg")
+name = "Tier 1 Robot"
+weight = 1
+tier = 1
+metadata/_custom_type_script = "uid://v8frponxyegr"

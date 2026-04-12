@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://d4db5v1dpvog1"]
+
+[ext_resource type="Script" uid="uid://v8frponxyegr" path="res://scripts/Loot.gd" id="1_nj626"]
+[ext_resource type="Resource" uid="uid://c6esdx8fvkq2m" path="res://Resources/Loot/Tier1Robot.tres" id="2_lb0aq"]
+[ext_resource type="Script" uid="uid://b6x66w53yv4i1" path="res://scripts/LootTable.gd" id="2_xmrwi"]
+[ext_resource type="Resource" uid="uid://dhs6am6o6w7te" path="res://Resources/Loot/SparePart.tres" id="3_uvobq"]
+[ext_resource type="Resource" uid="uid://ch3bd5pc6y424" path="res://Resources/Loot/Scrap.tres" id="4_alygw"]
+[ext_resource type="Resource" uid="uid://codnegt4gvpg6" path="res://Resources/Loot/Tier2Robot.tres" id="5_k08eq"]
+[ext_resource type="Resource" uid="uid://mf0my107jsdq" path="res://Resources/Loot/Empty.tres" id="6_5lp0x"]
+
+[resource]
+script = ExtResource("2_xmrwi")
+loot = Dictionary[ExtResource("1_nj626"), int]({
+ExtResource("2_lb0aq"): 4,
+ExtResource("3_uvobq"): 10,
+ExtResource("4_alygw"): 4,
+ExtResource("5_k08eq"): 1,
+ExtResource("6_5lp0x"): 1
+})
+metadata/_custom_type_script = "uid://b6x66w53yv4i1"

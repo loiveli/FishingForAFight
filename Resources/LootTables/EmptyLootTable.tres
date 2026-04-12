@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://dcq3tp03mtpey"]
+
+[ext_resource type="Script" uid="uid://v8frponxyegr" path="res://scripts/Loot.gd" id="1_m1n5w"]
+[ext_resource type="Script" uid="uid://b6x66w53yv4i1" path="res://scripts/LootTable.gd" id="2_6btyw"]
+[ext_resource type="Resource" uid="uid://ch3bd5pc6y424" path="res://Resources/Loot/Scrap.tres" id="2_j11yq"]
+[ext_resource type="Resource" uid="uid://mf0my107jsdq" path="res://Resources/Loot/Empty.tres" id="3_cnoxv"]
+
+[resource]
+script = ExtResource("2_6btyw")
+loot = Dictionary[ExtResource("1_m1n5w"), int]({
+ExtResource("2_j11yq"): 5,
+ExtResource("3_cnoxv"): 5
+})
+metadata/_custom_type_script = "uid://b6x66w53yv4i1"

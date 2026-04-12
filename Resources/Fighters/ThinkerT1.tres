@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Robot" format=3 uid="uid://dyh2dltakf1x2"]
+
+[ext_resource type="Script" uid="uid://d3fwwq4vp6qxh" path="res://scripts/RobotFunction.gd" id="1_j81ih"]
+[ext_resource type="Resource" uid="uid://c4qh113vy6nt6" path="res://Resources/Attacks/BasicAttack.tres" id="2_t6tf6"]
+[ext_resource type="Script" uid="uid://7ps78n8r4x8r" path="res://scripts/Robot.gd" id="3_ljloc"]
+[ext_resource type="Texture2D" uid="uid://clrjmfbyjmj8l" path="res://sprites/robots/thinker.jpg" id="4_qtlmt"]
+
+[resource]
+script = ExtResource("3_ljloc")
+name = "TH1N-K3R 1.2"
+texture = ExtResource("4_qtlmt")
+health = 2
+attackPower = 1
+functions = Array[ExtResource("1_j81ih")]([ExtResource("2_t6tf6")])
+tier = 1
+metadata/_custom_type_script = "uid://7ps78n8r4x8r"

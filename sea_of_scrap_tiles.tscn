@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c4vk2fxom0fnl"]
+
+[ext_resource type="PackedScene" uid="uid://cr3btp34bp3eg" path="res://models/grass.glb" id="1_xoclg"]
+[ext_resource type="PackedScene" uid="uid://cpgomrkq5b53h" path="res://kenney_modular-dungeon-kit_1.0/Models/FBX format/template-floor.fbx" id="2_suadm"]
+[ext_resource type="PackedScene" uid="uid://dmmfcl47152nx" path="res://kenney_modular-dungeon-kit_1.0/Models/FBX format/template-floor-detail.fbx" id="3_mcshc"]
+[ext_resource type="PackedScene" uid="uid://bqlw56y7patlk" path="res://kenney_modular-dungeon-kit_1.0/Models/FBX format/template-floor-detail-a.fbx" id="4_0npdq"]
+
+[node name="SeaOfScrap_tiles" type="Node3D" unique_id=23859521]
+
+[node name="Safe" parent="." unique_id=196622352 instance=ExtResource("1_xoclg")]
+
+[node name="Empty" parent="." unique_id=787201479 instance=ExtResource("2_suadm")]
+
+[node name="Loot" parent="." unique_id=1722004196 instance=ExtResource("3_mcshc")]
+
+[node name="Scrap" parent="." unique_id=171210336 instance=ExtResource("4_0npdq")]

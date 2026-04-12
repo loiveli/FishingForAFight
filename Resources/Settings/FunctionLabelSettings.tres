@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://cqhiu6bc5pexy"]
+
+[ext_resource type="FontFile" uid="uid://bekekmo1sb26a" path="res://kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="1_e2xou"]
+
+[resource]
+font = ExtResource("1_e2xou")
+font_size = 8

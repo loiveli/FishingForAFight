@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://ds4gv8y2n8k2t"]
+
+[ext_resource type="Script" path="res://scripts/upgrade_marker.gd" id="1_5r2ek"]
+[ext_resource type="Texture2D" path="res://sprites/selector.png" id="2_x6q8p"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="3_v1w9m"]
+
+[node name="UpgradeMarker" type="Control" node_paths=PackedStringArray("slotContainer")]
+custom_minimum_size = Vector2(64, 18)
+mouse_filter = 2
+script = ExtResource("1_5r2ek")
+slotContainer = NodePath("Slots")
+
+[node name="Slots" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -8.0
+offset_right = 32.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="UpgradeSlot0" type="TextureRect" parent="Slots"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("2_x6q8p")
+expand_mode = 1
+stretch_mode = 5
+mouse_filter = 2
+
+[node name="PartIcon" type="TextureRect" parent="Slots/UpgradeSlot0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_v1w9m")
+expand_mode = 1
+stretch_mode = 5
+mouse_filter = 2
+modulate = Color(1, 1, 1, 0.2)
+
+[node name="UpgradeSlot1" type="TextureRect" parent="Slots"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("2_x6q8p")
+expand_mode = 1
+stretch_mode = 5
+mouse_filter = 2
+
+[node name="PartIcon" type="TextureRect" parent="Slots/UpgradeSlot1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_v1w9m")
+expand_mode = 1
+stretch_mode = 5
+mouse_filter = 2
+modulate = Color(1, 1, 1, 0.2)
+
+[node name="UpgradeSlot2" type="TextureRect" parent="Slots"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("2_x6q8p")
+expand_mode = 1
+stretch_mode = 5
+mouse_filter = 2
+
+[node name="PartIcon" type="TextureRect" parent="Slots/UpgradeSlot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_v1w9m")
+expand_mode = 1
+stretch_mode = 5
+mouse_filter = 2
+modulate = Color(1, 1, 1, 0.2)

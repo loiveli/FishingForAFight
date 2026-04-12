@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Robot" format=3 uid="uid://dgbr8erw3t58y"]
+
+[ext_resource type="Script" uid="uid://d3fwwq4vp6qxh" path="res://scripts/RobotFunction.gd" id="1_d8if3"]
+[ext_resource type="Resource" uid="uid://c4qh113vy6nt6" path="res://Resources/Attacks/BasicAttack.tres" id="2_lw6qu"]
+[ext_resource type="Script" uid="uid://7ps78n8r4x8r" path="res://scripts/Robot.gd" id="3_a5mcr"]
+[ext_resource type="Texture2D" uid="uid://bp4o2s70ynnte" path="res://sprites/robots/crusher.jpg" id="4_cedkr"]
+
+[resource]
+script = ExtResource("3_a5mcr")
+name = "CrushBot V12"
+texture = ExtResource("4_cedkr")
+health = 5
+attackPower = 5
+functions = Array[ExtResource("1_d8if3")]([ExtResource("2_lw6qu")])
+type = 1
+tier = 2
+metadata/_custom_type_script = "uid://7ps78n8r4x8r"

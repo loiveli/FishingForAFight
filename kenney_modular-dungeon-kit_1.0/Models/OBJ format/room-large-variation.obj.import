@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d3bc10jcmv3n"
+path="res://.godot/imported/room-large-variation.obj-66813c61957c6e4e1b75f09aa5697f5e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/room-large-variation.obj-66813c61957c6e4e1b75f09aa5697f5e.mesh"]
+
+source_file="res://kenney_modular-dungeon-kit_1.0/Models/OBJ format/room-large-variation.obj"
+dest_files=["res://.godot/imported/room-large-variation.obj-66813c61957c6e4e1b75f09aa5697f5e.mesh", "res://.godot/imported/room-large-variation.obj-66813c61957c6e4e1b75f09aa5697f5e.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

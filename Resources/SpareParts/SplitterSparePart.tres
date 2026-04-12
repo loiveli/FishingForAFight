@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SparePart" format=3 uid="uid://xhap6o7l531d"]
+
+[ext_resource type="Script" uid="uid://d3fwwq4vp6qxh" path="res://scripts/RobotFunction.gd" id="1_twvx8"]
+[ext_resource type="Resource" uid="uid://bsi0b0mdm2ckk" path="res://Resources/Attacks/SplitAttack.tres" id="2_kwtjt"]
+[ext_resource type="Script" uid="uid://bs7qc6ep080nk" path="res://scripts/SparePart.gd" id="2_luoiv"]
+[ext_resource type="Texture2D" uid="uid://diiofqgiqq857" path="res://icon.svg" id="4_kwtjt"]
+
+[resource]
+script = ExtResource("2_luoiv")
+texture = ExtResource("4_kwtjt")
+tier = 2
+functions = Array[ExtResource("1_twvx8")]([ExtResource("2_kwtjt")])
+metadata/_custom_type_script = "uid://bs7qc6ep080nk"

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BasicAttack" format=3 uid="uid://c4qh113vy6nt6"]
+
+[ext_resource type="Script" uid="uid://dv0h7e2jqnbfv" path="res://scripts/RobotFunctions/BasicAttack.gd" id="1_amdtv"]
+
+[resource]
+script = ExtResource("1_amdtv")
+name = "Basic attack"
+description = "Attacks the first available target"
+metadata/_custom_type_script = "uid://dv0h7e2jqnbfv"

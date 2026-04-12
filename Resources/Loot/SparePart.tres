@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Loot" format=3 uid="uid://dhs6am6o6w7te"]
+
+[ext_resource type="Script" uid="uid://v8frponxyegr" path="res://scripts/Loot.gd" id="1_o7l0h"]
+[ext_resource type="Texture2D" uid="uid://diiofqgiqq857" path="res://icon.svg" id="2_7bkb5"]
+
+[resource]
+script = ExtResource("1_o7l0h")
+texture = ExtResource("2_7bkb5")
+name = "Spare part"
+weight = 1
+type = 1
+tier = 1
+metadata/_custom_type_script = "uid://v8frponxyegr"

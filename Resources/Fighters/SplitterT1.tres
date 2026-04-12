@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Robot" format=3 uid="uid://r1gvtvn7qbl6"]
+
+[ext_resource type="Script" uid="uid://d3fwwq4vp6qxh" path="res://scripts/RobotFunction.gd" id="1_bs1i2"]
+[ext_resource type="Script" uid="uid://7ps78n8r4x8r" path="res://scripts/Robot.gd" id="2_cg8ej"]
+[ext_resource type="Resource" uid="uid://bsi0b0mdm2ckk" path="res://Resources/Attacks/SplitAttack.tres" id="2_qhh12"]
+[ext_resource type="Texture2D" uid="uid://dsagldhihk0de" path="res://sprites/robots/splitter.jpg" id="4_425fq"]
+
+[resource]
+script = ExtResource("2_cg8ej")
+name = "SplitBot V3"
+texture = ExtResource("4_425fq")
+health = 1
+attackPower = 2
+functions = Array[ExtResource("1_bs1i2")]([ExtResource("2_qhh12")])
+type = 2
+tier = 1
+metadata/_custom_type_script = "uid://7ps78n8r4x8r"

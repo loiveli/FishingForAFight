@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c7lju1fgc6j7h"]
+
+[ext_resource type="Script" uid="uid://kkvk225iraye" path="res://scripts/fighterSlot.gd" id="1_6xnox"]
+
+[node name="FighterSlot" type="Control" unique_id=1661540380]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6xnox")
+
+[node name="SlotPanel" type="Panel" parent="." unique_id=604401819]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 64.0
+mouse_filter = 2
