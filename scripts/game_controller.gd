@@ -30,7 +30,7 @@ func _seed_initial_roster() -> void:
 	for robot_template: Robot in robotPool:
 		if robot_template == null:
 			continue
-		if robot_template.tier != 1:
+		if robot_template.cardTier.tierIndex != 1:
 			continue
 
 		var key: String = "%s_%d" % [robot_template.name, int(robot_template.type)]
@@ -67,14 +67,14 @@ func processLoot(loot: Array[Loot]):
 	for item in loot:
 		print("Processing loot: ", item)
 		if item.type == Loot.LootType.ROBOT:
-			var robot_template: Robot = robotPool.filter(func(r): return r.tier == item.tier).pick_random()
+			var robot_template: Robot = robotPool.filter(func(r): return r.cardTier.tierIndex == item.cardTier.tierIndex).pick_random()
 			if robot_template == null:
 				continue
 			var robot: Robot = robot_template.duplicate(true)
 			fightRoster.append(robot)
 			emit_signal("processCard", robot)
 		elif item.type == Loot.LootType.SPAREPART:
-			var part_template: SparePart = partPool.filter(func(p): return p.tier == item.tier).pick_random()
+			var part_template: SparePart = partPool.filter(func(p): return p.cardTier.tierIndex == item.cardTier.tierIndex).pick_random()
 			if part_template == null:
 				continue
 			var part: SparePart = part_template.duplicate(true)
@@ -110,8 +110,8 @@ func remove_fight_robot(robot: Robot) -> void:
 		fightRoster.remove_at(idx)
 
 # Added by Copilot
-func create_spare_part_from_tier(tier: int) -> SparePart:
-	var matching_parts: Array[SparePart] = partPool.filter(func(p): return p != null and p.tier == tier)
+func create_spare_part_from_tier(tier: CardTier) -> SparePart:
+	var matching_parts: Array[SparePart] = partPool.filter(func(p): return p != null and p.cardTier == tier)
 	var selected_template: SparePart = null
 	if not matching_parts.is_empty():
 		selected_template = matching_parts.pick_random()

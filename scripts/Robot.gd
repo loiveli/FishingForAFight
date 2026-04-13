@@ -9,7 +9,7 @@ enum RobotType { THINKER, CRUSHER, SPLITTER, BUILDER}
 @export var attackPower: int
 @export var functions: Array[RobotFunction]
 @export var type: RobotType
-@export var tier: int
+@export var cardTier: CardTier
 @export var upgradeCount: int = 0
 @export var fightsCompleted: int = 0
 

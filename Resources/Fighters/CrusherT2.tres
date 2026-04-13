@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://c4qh113vy6nt6" path="res://Resources/Attacks/BasicAttack.tres" id="2_lw6qu"]
 [ext_resource type="Script" uid="uid://7ps78n8r4x8r" path="res://scripts/Robot.gd" id="3_a5mcr"]
 [ext_resource type="Texture2D" uid="uid://bp4o2s70ynnte" path="res://sprites/robots/crusher.jpg" id="4_cedkr"]
+[ext_resource type="Resource" uid="uid://ye7wtacqo4nh" path="res://Resources/Tiers/Tier2.tres" id="5_yvusb"]
 
 [resource]
 script = ExtResource("3_a5mcr")
@@ -13,5 +14,5 @@ health = 5
 attackPower = 5
 functions = Array[ExtResource("1_d8if3")]([ExtResource("2_lw6qu")])
 type = 1
-tier = 2
+cardTier = ExtResource("5_yvusb")
 metadata/_custom_type_script = "uid://7ps78n8r4x8r"

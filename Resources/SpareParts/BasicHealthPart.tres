@@ -3,11 +3,12 @@
 [ext_resource type="Script" uid="uid://d3fwwq4vp6qxh" path="res://scripts/RobotFunction.gd" id="1_ag50h"]
 [ext_resource type="Script" uid="uid://bs7qc6ep080nk" path="res://scripts/SparePart.gd" id="2_c5wje"]
 [ext_resource type="Texture2D" uid="uid://diiofqgiqq857" path="res://icon.svg" id="3_c5wje"]
+[ext_resource type="Resource" uid="uid://d2w68i3ctqlki" path="res://Resources/Tiers/Tier1.tres" id="4_dcuo3"]
 
 [resource]
 script = ExtResource("2_c5wje")
 name = "Health Upgrade"
 health = 1
 texture = ExtResource("3_c5wje")
-tier = 1
+cardTier = ExtResource("4_dcuo3")
 metadata/_custom_type_script = "uid://bs7qc6ep080nk"

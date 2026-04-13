@@ -10,7 +10,7 @@ func getRandomLoot() -> Loot:
 	for lootItem in loot.keys():
 		randomWeight -= loot[lootItem]
 		if randomWeight < 0:
-			if lootItem.weight > 0:
+			if lootItem.cardTier.tierIndex >= 0:
 				return lootItem
 	return null
 
@@ -19,3 +19,12 @@ func addLoot(droppedLoot: Loot, count: int):
 		self.loot[droppedLoot] += count
 	else:
 		self.loot[droppedLoot] = count
+
+
+func getLootTier() -> int:
+	if loot.size() == 0:
+		return -1
+	var sorted = loot.keys()
+	sorted.sort_custom(func(a, b): return loot[a] > loot[b])
+	var top2 = sorted.slice(0, 2)
+	return top2.map(func(l): return l.cardTier.tierIndex).reduce(func(a, b): return max(a, b))

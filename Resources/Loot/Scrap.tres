@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://v8frponxyegr" path="res://scripts/Loot.gd" id="1_vhv4a"]
 [ext_resource type="Texture2D" uid="uid://xgvqm11gottj" path="res://sprites/robots/scrap.jpg" id="2_p6rbp"]
+[ext_resource type="Resource" uid="uid://d0r1xbugu64f6" path="res://Resources/Tiers/Tier0.tres" id="3_or7ld"]
 
 [resource]
 script = ExtResource("1_vhv4a")
@@ -9,4 +10,5 @@ texture = ExtResource("2_p6rbp")
 name = "Scrap"
 weight = 1
 type = 2
+cardTier = ExtResource("3_or7ld")
 metadata/_custom_type_script = "uid://v8frponxyegr"

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CardTier" format=3 uid="uid://d2w68i3ctqlki"]
+
+[ext_resource type="Script" uid="uid://dt3h82grt13rm" path="res://scripts/CardTier.gd" id="1_34amt"]
+
+[resource]
+script = ExtResource("1_34amt")
+tierIndex = 1
+tierColor = Color(1, 1, 0, 1)

@@ -7,6 +7,7 @@
 self_modulate = Color(0.047058824, 0.627451, 0.93333334, 1)
 script = ExtResource("2_k26im")
 functionPanelScene = null
+partCard = null
 
-[node name="UpgradeMarker" parent="CardPanel/CardLayout" index="4"]
+[node name="UpgradeMarker" parent="CardPanel/CardLayout" parent_id_path=PackedInt32Array(728460904) index="5" unique_id=1121050928]
 visible = false

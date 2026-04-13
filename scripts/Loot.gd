@@ -11,4 +11,4 @@ enum LootType { ROBOT, SPAREPART, SCRAP }
 @export_subgroup("Gameplay")
 @export var weight: int
 @export var type: LootType
-@export var tier: int
+@export var cardTier: CardTier

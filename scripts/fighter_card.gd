@@ -11,6 +11,8 @@ extends Control
 @export var functionPanelScene: PackedScene
 @export var fadeInSeconds: float = 0.5
 
+@export var cardPanel: Panel
+
 @export var robotCard: Robot
 
 # Added by Copilot
@@ -34,6 +36,7 @@ func setupCard(robot: Robot):
 	attackLabel.text = str(robot.attackPower)
 	typeLabel.text = Robot.RobotType.find_key(robot.type)
 	textureRect.texture = robot.texture
+	cardPanel.self_modulate = robot.cardTier.tierColor
 	_update_rust_bar(robot)
 	_update_upgrade_marker(robot)
 	# Added by Copilot
@@ -50,12 +53,12 @@ func setupCard(robot: Robot):
 
 
 func _fadeIn():
-	var startColor = self_modulate
+	var startColor = cardPanel.self_modulate
 	startColor.a = 0.0
-	self_modulate = startColor
+	cardPanel.self_modulate = startColor
 
 	var tween = create_tween()
-	tween.tween_property(self, "self_modulate:a", 1.0, fadeInSeconds)
+	tween.tween_property(cardPanel, "self_modulate:a", 1.0, fadeInSeconds)
 		
 
 func _get_drag_data(_at_position: Vector2) -> Variant:

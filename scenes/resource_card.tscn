@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://dsscqa454d6xl"]
 
-[ext_resource type="Script" uid="uid://b1yj2t0gw1gmd" path="res://scenes/ResourceCard.gd" id="1_2ijqj"]
+[ext_resource type="Script" uid="uid://b1yj2t0gw1gmd" path="res://scripts/ResourceCard.gd" id="1_2ijqj"]
 [ext_resource type="LabelSettings" uid="uid://nqb1oo5oymj" path="res://labelSettings.tres" id="1_rf0uw"]
 [ext_resource type="Texture2D" uid="uid://xgvqm11gottj" path="res://sprites/robots/scrap.jpg" id="2_2ijqj"]
 
 [node name="ResourceCard" type="Panel" unique_id=1804533890 node_paths=PackedStringArray("nameLabel", "weightLabel", "textureRect")]
-modulate = Color(2.7723067, 1.2631322, 0, 1)
-self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(120, 80)
 script = ExtResource("1_2ijqj")
 nameLabel = NodePath("ResourceLayout/Name")

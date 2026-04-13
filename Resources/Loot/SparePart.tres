@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://v8frponxyegr" path="res://scripts/Loot.gd" id="1_o7l0h"]
 [ext_resource type="Texture2D" uid="uid://diiofqgiqq857" path="res://icon.svg" id="2_7bkb5"]
+[ext_resource type="Resource" uid="uid://d2w68i3ctqlki" path="res://Resources/Tiers/Tier1.tres" id="3_xeonb"]
 
 [resource]
 script = ExtResource("1_o7l0h")
@@ -9,5 +10,5 @@ texture = ExtResource("2_7bkb5")
 name = "Spare part"
 weight = 1
 type = 1
-tier = 1
+cardTier = ExtResource("3_xeonb")
 metadata/_custom_type_script = "uid://v8frponxyegr"

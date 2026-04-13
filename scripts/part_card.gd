@@ -8,6 +8,9 @@ extends Control
 @export var functionPanelScene: PackedScene
 @export var fadeInSeconds: float = 0.5
 @export var partCard: SparePart
+@export var cardPanel: Panel
+
+
 var _drag_started_with_part: bool = false
 const UPGRADE_MARKER_PATH := "CardPanel/CardLayout/UpgradeMarker"
 const RUST_BAR_PATH := "CardPanel/CardLayout/RustBar"
@@ -39,6 +42,7 @@ func setupCard(part: SparePart):
 	healthLabel.text = str(part.health)
 	attackLabel.text = str(part.attack)
 	textureRect.texture = part.texture
+	cardPanel.self_modulate = part.cardTier.tierColor
 	if part.functions.size() > 0 and functionPanelScene != null:
 		functionContainer.visible = true
 		for function in part.functions:
@@ -52,12 +56,12 @@ func setupCard(part: SparePart):
 
 
 func _fadeIn():
-	var startColor = self_modulate
+	var startColor = cardPanel.self_modulate
 	startColor.a = 0.0
-	self_modulate = startColor
+	cardPanel.self_modulate = startColor
 
 	var tween = create_tween()
-	tween.tween_property(self, "self_modulate:a", 1.0, fadeInSeconds)
+	tween.tween_property(cardPanel, "self_modulate:a", 1.0, fadeInSeconds)
 
 # Added by Copilot
 func _get_drag_data(_at_position: Vector2) -> Variant:

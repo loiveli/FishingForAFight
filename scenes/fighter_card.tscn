@@ -8,8 +8,7 @@
 [ext_resource type="FontFile" uid="uid://co8vmb8uaplfd" path="res://kenney_ui-pack-space-expansion/Font/Kenney Future Narrow.ttf" id="5_huawe"]
 [ext_resource type="PackedScene" uid="uid://ds4gv8y2n8k2t" path="res://scenes/upgrade_marker.tscn" id="6_e1w8v"]
 [ext_resource type="PackedScene" uid="uid://dwvse3hfdmsvs" path="res://scenes/function_panel.tscn" id="7_wb47d"]
-[ext_resource type="Texture2D" path="res://rustBackground.tres" id="8_0h5qf"]
-[ext_resource type="Texture2D" path="res://rustAtlas.tres" id="9_jv8s2"]
+[ext_resource type="Texture2D" uid="uid://cq2oy3aliey4k" path="res://rustBackground.tres" id="8_0h5qf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1jg3h"]
 font = ExtResource("5_huawe")
@@ -18,7 +17,7 @@ font_color = Color(0.9066231, 0.9185547, 0.050422102, 1)
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
-[node name="FighterCard" type="Control" unique_id=1138694998 node_paths=PackedStringArray("nameLabel", "healthLabel", "attackLabel", "typeLabel", "textureRect", "rustBar", "functionContainer", "upgradeMarker")]
+[node name="FighterCard" type="Control" unique_id=1138694998 node_paths=PackedStringArray("nameLabel", "healthLabel", "attackLabel", "typeLabel", "textureRect", "rustBar", "functionContainer", "upgradeMarker", "cardPanel")]
 self_modulate = Color(1, 1, 0, 1)
 custom_minimum_size = Vector2(200, 300)
 layout_mode = 3
@@ -36,6 +35,7 @@ rustBar = NodePath("CardPanel/CardLayout/RustBar")
 functionContainer = NodePath("CardPanel/CardLayout/Functions")
 upgradeMarker = NodePath("CardPanel/CardLayout/UpgradeMarker")
 functionPanelScene = ExtResource("7_wb47d")
+cardPanel = NodePath("CardPanel")
 
 [node name="CardPanel" type="Panel" parent="." unique_id=1156378832]
 custom_minimum_size = Vector2(200, 300)
@@ -106,14 +106,13 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(96, 8)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 max_value = 3.0
+rounded = true
+allow_greater = true
 texture_under = ExtResource("8_0h5qf")
 texture_progress = ExtResource("8_0h5qf")
 tint_progress = Color(0.58, 0.34, 0.16, 1)
-rounded = true
-allow_greater = true
-nine_patch_stretch = false
-mouse_filter = 2
 
 [node name="Functions" type="TabContainer" parent="CardPanel/CardLayout" unique_id=744404176]
 custom_minimum_size = Vector2(165, 72)

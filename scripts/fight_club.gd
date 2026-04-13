@@ -120,9 +120,7 @@ func start_battle() -> int:
 	lastBattleScore = total_score
 	lastBattleStars = stars
 
-	var stars_text: String = ""
-	for _i in range(stars):
-		stars_text += "*"
+
 	_update_score_label(stars, total_score)
 	GameController.register_fight_energy_reward(stars)
 	if scoreLabel != null:
@@ -254,7 +252,7 @@ func _return_all_to_roster(all_slots: Array, snapshot: Dictionary, participating
 
 		if robot.is_broken():
 			GameController.remove_fight_robot(robot)
-			var salvage_part: SparePart = GameController.create_spare_part_from_tier(robot.tier)
+			var salvage_part: SparePart = GameController.create_spare_part_from_tier(robot.cardTier)
 			if salvage_part != null:
 				GameController.add_fight_part(salvage_part)
 				if part_inventory != null and part_inventory.has_method("add_part_card"):

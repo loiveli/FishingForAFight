@@ -9,7 +9,11 @@ var energy: int = maxEnergy
 
 signal lootAdded(loot: Loot)
 signal lootDropped(loot: Loot)
+signal lootScanned(position: Vector3i)
+signal resetScan()
 
+
+var scanned: bool = false
 var canMove: bool = true
 
 var magnetActive: bool = false
@@ -63,6 +67,8 @@ func _process(delta):
 
 
 
+
+
 func handle_input(_delta):
 	
 	var movement := Vector3.ZERO
@@ -82,7 +88,13 @@ func handle_input(_delta):
 		magnetActive = !magnetActive
 		magnet.visible = magnetActive
 
-	
+	if Input.is_action_just_released("scan_loot"):
+		emit_signal("lootScanned", position)
+		energy -= 1
+		energyBar.value = energy
+		scanned = true
+
+
 func total_move_cost():
 	if inventory.size() <= 0:
 		return 1
@@ -98,6 +110,8 @@ func sortByWeight(lootA: Loot, lootB: Loot):
 
 
 func move(movement: Vector3):
+	
+	
 	position += movement
 	
 	var totalCost = total_move_cost()
@@ -129,12 +143,16 @@ func move(movement: Vector3):
 		energy -= totalCost
 	
 	else:
+		if scanned:
+			scanned = false
+			emit_signal("resetScan")
 		GameController.bankLoot(inventory)
 		for loot in inventory:
 			emit_signal("lootDropped", loot)
 		inventory.clear()
 		energy = maxEnergy
-		
+		magnetActive = false
+		magnet.visible = magnetActive
 
 	energyBar.value = energy
 	

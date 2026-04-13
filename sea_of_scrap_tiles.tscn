@@ -8,9 +8,12 @@
 [node name="SeaOfScrap_tiles" type="Node3D" unique_id=23859521]
 
 [node name="Safe" parent="." unique_id=196622352 instance=ExtResource("1_xoclg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
 [node name="Empty" parent="." unique_id=787201479 instance=ExtResource("2_suadm")]
 
 [node name="Loot" parent="." unique_id=1722004196 instance=ExtResource("3_mcshc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
 [node name="Scrap" parent="." unique_id=171210336 instance=ExtResource("4_0npdq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)

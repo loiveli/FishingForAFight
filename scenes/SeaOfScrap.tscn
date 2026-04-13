@@ -14,13 +14,32 @@
 [ext_resource type="Texture2D" uid="uid://dvrcsxvqyy4gi" path="res://sprites/magnet.svg" id="9_a8y0u"]
 [ext_resource type="Resource" uid="uid://dcq3tp03mtpey" path="res://Resources/LootTables/EmptyLootTable.tres" id="9_muem4"]
 [ext_resource type="PackedScene" uid="uid://dsscqa454d6xl" path="res://scenes/resource_card.tscn" id="10_jkv2x"]
+[ext_resource type="Script" uid="uid://dt3h82grt13rm" path="res://scripts/CardTier.gd" id="10_xe0uc"]
+[ext_resource type="Resource" uid="uid://d0r1xbugu64f6" path="res://Resources/Tiers/Tier0.tres" id="12_upe5i"]
+[ext_resource type="Resource" uid="uid://d2w68i3ctqlki" path="res://Resources/Tiers/Tier1.tres" id="13_whvey"]
+[ext_resource type="Resource" uid="uid://ye7wtacqo4nh" path="res://Resources/Tiers/Tier2.tres" id="14_0lddj"]
 [ext_resource type="Script" uid="uid://c7d3dmly67ft0" path="res://scripts/inventory.gd" id="14_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://bvukgnbl2hvx3" path="res://scenes/card_popup.tscn" id="16_whvey"]
 [ext_resource type="PackedScene" uid="uid://blbhpc3wmekxd" path="res://scenes/game_controller.tscn" id="17_muem4"]
+[ext_resource type="Script" uid="uid://djwov2u7ak007" path="res://scenes/UIinstructions.gd" id="21_8kpcj"]
+[ext_resource type="Texture2D" uid="uid://t4cg2mb5sgtw" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_w.png" id="22_lrmns"]
+[ext_resource type="Texture2D" uid="uid://d0q56a5wek438" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_a.png" id="23_sb4qk"]
+[ext_resource type="Texture2D" uid="uid://cw84y8qljg8u5" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_s.png" id="24_30kbt"]
 [ext_resource type="AudioStream" uid="uid://wvfsgkl8qob6" path="res://sounds/ambience.ogg" id="24_y6deb"]
+[ext_resource type="Texture2D" uid="uid://cft0uiiflp6tg" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_d.png" id="25_faesd"]
 [ext_resource type="Resource" uid="uid://ba50swa8qolkr" path="res://Resources/SpareParts/BasicAttackPart.tres" id="26_2f3dj"]
 [ext_resource type="Script" uid="uid://bs7qc6ep080nk" path="res://scripts/SparePart.gd" id="26_dgi5k"]
+[ext_resource type="FontFile" uid="uid://bekekmo1sb26a" path="res://kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="26_gskbp"]
+[ext_resource type="Texture2D" uid="uid://c2qyxmfrewxak" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_space.png" id="27_mu8ct"]
 [ext_resource type="Resource" uid="uid://cqh8um8l25ugd" path="res://Resources/SpareParts/BasicHealthPart.tres" id="27_yq6so"]
+[ext_resource type="Texture2D" uid="uid://bbhemvbqd48a2" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_e.png" id="28_dpsds"]
+[ext_resource type="Texture2D" uid="uid://c5smvvg2cfelc" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Double/keyboard_tab.png" id="29_05ahd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2k0bm"]
+font = ExtResource("26_gskbp")
+font_size = 20
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [node name="SeaOfScrap" type="Node3D" unique_id=962874955]
 
@@ -59,10 +78,10 @@ script = ExtResource("6_eb6dy")
 highLootTable = ExtResource("7_jkv2x")
 lowLootTable = ExtResource("8_jbj1t")
 emptyLootTable = ExtResource("9_muem4")
+tiers = Array[ExtResource("10_xe0uc")]([ExtResource("12_upe5i"), ExtResource("13_whvey"), ExtResource("14_0lddj")])
 
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=1185481515]
 transform = Transform3D(-0.422618, -0.694272, 0.582563, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, 0, 0)
-light_color = Color(1, 0.23529412, 0.10980392, 1)
 shadow_enabled = true
 shadow_opacity = 0.11
 
@@ -121,6 +140,107 @@ layout_mode = 2
 
 [node name="CardPopup" parent="CanvasLayer" unique_id=722414133 groups=["CardPopup"] instance=ExtResource("16_whvey")]
 visible = false
+
+[node name="UIInstructions" type="VBoxContainer" parent="CanvasLayer" unique_id=1550378504]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+script = ExtResource("21_8kpcj")
+
+[node name="MovementInstructions" type="HBoxContainer" parent="CanvasLayer/UIInstructions" unique_id=36694999]
+layout_mode = 2
+theme_override_constants/separation = -8
+
+[node name="W" type="TextureRect" parent="CanvasLayer/UIInstructions/MovementInstructions" unique_id=1235975095]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("22_lrmns")
+expand_mode = 1
+
+[node name="A" type="TextureRect" parent="CanvasLayer/UIInstructions/MovementInstructions" unique_id=1566370933]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("23_sb4qk")
+expand_mode = 1
+
+[node name="S" type="TextureRect" parent="CanvasLayer/UIInstructions/MovementInstructions" unique_id=1423213541]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("24_30kbt")
+expand_mode = 1
+
+[node name="D" type="TextureRect" parent="CanvasLayer/UIInstructions/MovementInstructions" unique_id=2071706331]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("25_faesd")
+expand_mode = 1
+
+[node name="MoveLabel" type="Label" parent="CanvasLayer/UIInstructions/MovementInstructions" unique_id=1962262189]
+layout_mode = 2
+text = "  Move boat"
+label_settings = SubResource("LabelSettings_2k0bm")
+
+[node name="MagnetInstructions" type="HBoxContainer" parent="CanvasLayer/UIInstructions" unique_id=1090191413]
+layout_mode = 2
+theme_override_constants/separation = -8
+
+[node name="Space" type="TextureRect" parent="CanvasLayer/UIInstructions/MagnetInstructions" unique_id=1587575586]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("27_mu8ct")
+expand_mode = 1
+
+[node name="MagnetLabel" type="Label" parent="CanvasLayer/UIInstructions/MagnetInstructions" unique_id=1378334603]
+layout_mode = 2
+text = "  Toggle magnet"
+label_settings = SubResource("LabelSettings_2k0bm")
+
+[node name="ScanInstructions" type="HBoxContainer" parent="CanvasLayer/UIInstructions" unique_id=735350356]
+layout_mode = 2
+theme_override_constants/separation = -8
+
+[node name="E" type="TextureRect" parent="CanvasLayer/UIInstructions/ScanInstructions" unique_id=46456402]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("28_dpsds")
+expand_mode = 1
+
+[node name="ScanLabel" type="Label" parent="CanvasLayer/UIInstructions/ScanInstructions" unique_id=1619267503]
+layout_mode = 2
+text = "  Scan for loot"
+label_settings = SubResource("LabelSettings_2k0bm")
+
+[node name="ToggleInstructions" type="HBoxContainer" parent="CanvasLayer/UIInstructions" unique_id=2018137488]
+layout_mode = 2
+theme_override_constants/separation = -8
+
+[node name="Tab" type="TextureRect" parent="CanvasLayer/UIInstructions/ToggleInstructions" unique_id=1298330618]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("29_05ahd")
+expand_mode = 1
+
+[node name="ToggleUILabel" type="Label" parent="CanvasLayer/UIInstructions/ToggleInstructions" unique_id=1419219597]
+layout_mode = 2
+text = "  Toggle controls"
+label_settings = SubResource("LabelSettings_2k0bm")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1122622244]
 stream = ExtResource("24_y6deb")
