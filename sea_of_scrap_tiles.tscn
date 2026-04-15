@@ -4,6 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://cpgomrkq5b53h" path="res://kenney_modular-dungeon-kit_1.0/Models/FBX format/template-floor.fbx" id="2_suadm"]
 [ext_resource type="PackedScene" uid="uid://dmmfcl47152nx" path="res://kenney_modular-dungeon-kit_1.0/Models/FBX format/template-floor-detail.fbx" id="3_mcshc"]
 [ext_resource type="PackedScene" uid="uid://bqlw56y7patlk" path="res://kenney_modular-dungeon-kit_1.0/Models/FBX format/template-floor-detail-a.fbx" id="4_0npdq"]
+[ext_resource type="PackedScene" uid="uid://c8d8cmfyhxxko" path="res://kenney_conveyor-kit/Models/FBX format/box-small.fbx" id="5_mcshc"]
+[ext_resource type="PackedScene" uid="uid://ccr7cf8sc8flj" path="res://kenney_conveyor-kit/Models/FBX format/box-wide.fbx" id="6_umxyd"]
+[ext_resource type="PackedScene" uid="uid://bnfq26en128d0" path="res://kenney_conveyor-kit/Models/FBX format/scanner-high.fbx" id="7_j4prc"]
+[ext_resource type="PackedScene" uid="uid://d2lh0xrlypj4r" path="res://kenney_conveyor-kit/Models/FBX format/structure-yellow-short.fbx" id="8_e502r"]
+[ext_resource type="PackedScene" uid="uid://mgjc3rto0bry" path="res://kenney_conveyor-kit/Models/FBX format/arrow.fbx" id="8_umxyd"]
 
 [node name="SeaOfScrap_tiles" type="Node3D" unique_id=23859521]
 
@@ -12,8 +17,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
 [node name="Empty" parent="." unique_id=787201479 instance=ExtResource("2_suadm")]
 
-[node name="Loot" parent="." unique_id=1722004196 instance=ExtResource("3_mcshc")]
+[node name="LootT1" parent="." unique_id=171210336 instance=ExtResource("4_0npdq")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 1, 0, 1)
+
+[node name="LootT2" parent="." unique_id=1722004196 instance=ExtResource("3_mcshc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="Scrap" parent="." unique_id=171210336 instance=ExtResource("4_0npdq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+[node name="LootT3" parent="." unique_id=1474677946 instance=ExtResource("5_mcshc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="LootT4" parent="." unique_id=1179836179 instance=ExtResource("6_umxyd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+
+[node name="Magnet" parent="." unique_id=903070469 instance=ExtResource("7_j4prc")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 3)
+
+[node name="Charge" parent="." unique_id=377272267 instance=ExtResource("8_e502r")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 1, 0, 3)
+
+[node name="arrow" parent="." unique_id=182095060 instance=ExtResource("8_umxyd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)

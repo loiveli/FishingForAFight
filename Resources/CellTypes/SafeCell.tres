@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SafeCell" format=3 uid="uid://hqqcm0f56xf8"]
+
+[ext_resource type="Script" uid="uid://bdanu15jrvkko" path="res://scripts/ScrapCells/SafeCell.gd" id="1_fvwlf"]
+
+[resource]
+script = ExtResource("1_fvwlf")
+cellType = 3
+metadata/_custom_type_script = "uid://bdanu15jrvkko"

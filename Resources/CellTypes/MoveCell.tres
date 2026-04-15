@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MoveCell" format=3 uid="uid://drb1ryidlspl"]
+
+[ext_resource type="Script" uid="uid://b8v73xav01cjx" path="res://scripts/ScrapCells/MoveCell.gd" id="1_7ftfr"]
+
+[resource]
+script = ExtResource("1_7ftfr")
+cellType = 2
+gridTileID = 8
+metadata/_custom_type_script = "uid://b8v73xav01cjx"

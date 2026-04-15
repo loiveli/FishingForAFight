@@ -1,0 +1,50 @@
+[gd_scene format=4 uid="uid://b88p0qoded3pl"]
+
+[ext_resource type="Texture2D" uid="uid://bm3qdok3vs7sc" path="res://kenney_modular-dungeon-kit_1.0/Models/FBX format/Textures/colormap.png" id="1_oylys"]
+[ext_resource type="PackedScene" uid="uid://b3f0t6uydoyau" path="res://kenney_conveyor-kit/Models/FBX format/robot-arm-a.fbx" id="2_daydw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1g4f8"]
+resource_name = "colormap"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_oylys")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_u2g26"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1e-05, 1),
+"format": 34359742465,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAACAAEAAQADAAAAAQAAAAMA"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAPwAAAAAAAAA/AAAAvwAAAAAAAAC/AAAAPwAAAAAAAAC/AAAAvwAAAAAAAAA/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_elw8m"]
+resource_name = "Scene"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1e-05, 1),
+"attribute_data": PackedByteArray("uB4FPgDXozukcL0+SOF6PrgeBT5I4Xo+pHC9PgDXozu4HgU+ANejO7geBT5I4Xo+pHC9Pkjhej6kcL0+ANejOw=="),
+"format": 34359742487,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMABAAFAAYABgAHAAQA"),
+"material": SubResource("StandardMaterial3D_1g4f8"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAPwAAAAAAAAA/AAAAvwAAAAAAAAC/AAAAPwAAAAAAAAC/AAAAvwAAAAAAAAA/AAAAPwAAAAAAAAA/AAAAPwAAAAAAAAC/AAAAvwAAAAAAAAC/AAAAvwAAAAAAAAA//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//fwAAAAD/P/9/AAAAAP8//38AAAAA/z//fwAAAAD/Pw==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_u2g26")
+
+[node name="Magnet" type="Node3D" unique_id=1100982629]
+
+[node name="template-floor" type="MeshInstance3D" parent="." unique_id=1611838863]
+mesh = SubResource("ArrayMesh_elw8m")
+skeleton = NodePath("")
+
+[node name="robot-arm-a" parent="." unique_id=1766836846 instance=ExtResource("2_daydw")]

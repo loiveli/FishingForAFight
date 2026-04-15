@@ -1,6 +1,6 @@
 extends Resource
 class_name LootTable
-@export var loot: Dictionary[Loot, int]
+@export var loot: Dictionary[Loot, int] = {}
 
 
 func getRandomLoot() -> Loot:

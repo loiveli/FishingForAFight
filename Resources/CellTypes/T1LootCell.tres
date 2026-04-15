@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LootCell" format=3 uid="uid://d3q7usnamsrcm"]
+
+[ext_resource type="Resource" uid="uid://dcq3tp03mtpey" path="res://Resources/LootTables/T1LootTable.tres" id="1_0k5va"]
+[ext_resource type="Script" uid="uid://dtgu2fbss6jun" path="res://scripts/ScrapCells/LootCell.gd" id="1_ig6sf"]
+
+[resource]
+script = ExtResource("1_ig6sf")
+lootTable = ExtResource("1_0k5va")
+cellType = 1
+gridTileID = 2
+metadata/_custom_type_script = "uid://dtgu2fbss6jun"

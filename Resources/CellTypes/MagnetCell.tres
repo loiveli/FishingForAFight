@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MagnetCell" format=3 uid="uid://ck241gu2newpf"]
+
+[ext_resource type="Script" uid="uid://dqmxubhgufvjy" path="res://scripts/ScrapCells/MagnetCell.gd" id="1_wcukc"]
+
+[resource]
+script = ExtResource("1_wcukc")
+cellType = 5
+gridTileID = 6
+metadata/_custom_type_script = "uid://dqmxubhgufvjy"

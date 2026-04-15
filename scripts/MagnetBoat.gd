@@ -12,6 +12,7 @@ signal lootDropped(loot: Loot)
 signal lootScanned(position: Vector3i)
 signal resetScan()
 
+var moveCount: int = 0
 
 var scanned: bool = false
 var canMove: bool = true
@@ -83,8 +84,8 @@ func handle_input(_delta):
 		movement = Vector3(-1, 0, 0)
 	
 	if movement != Vector3.ZERO:
-		move(movement)
-	if Input.is_action_just_released("magnet_toggle") && energy > total_move_cost():
+		moveBoat(movement)
+	if Input.is_action_just_released("magnet_toggle") && energy > total_inventory_weight():
 		magnetActive = !magnetActive
 		magnet.visible = magnetActive
 
@@ -95,13 +96,13 @@ func handle_input(_delta):
 		scanned = true
 
 
-func total_move_cost():
+func total_inventory_weight():
 	if inventory.size() <= 0:
-		return 1
+		return 0
 	return inventory.reduce(
 		func(total, loot):
 		return total + loot.weight,
-		1
+		0
 	)
 	
 	
@@ -109,15 +110,64 @@ func sortByWeight(lootA: Loot, lootB: Loot):
 	return lootA.weight < lootB.weight
 
 
-func move(movement: Vector3):
+func moveBoat(movement: Vector3):
+	var magnetCost = total_inventory_weight()
+	
+	var newCell: ScrapCell = seaOfScrap.cellMap.get(position+movement)
+	if newCell:
+		var total_Cost = magnetCost + newCell.moveCost
+		energy -= total_Cost
+		energyBar.value = energy
+		position += movement
+		processCell(newCell)
 	
 	
-	position += movement
+
+
+
+func processCell(cell: ScrapCell):
+	match cell.cellType:
+		ScrapCell.Type.EMPTY:
+			moveCount = 0
+			pass
+		ScrapCell.Type.LOOT:
+			moveCount = 0
+			processMagnet(cell.lootTable)
+		ScrapCell.Type.MOVEMENT:
+			if moveCount < 2:
+				position += cell.movement as Vector3
+				moveCount += 1
+		ScrapCell.Type.SAFEZONE:
+			moveCount = 0
+			if inventory.size() > 0 || energy <= 0:
+				energy = maxEnergy
+				magnetActive = false
+				magnet.visible = magnetActive
+				GameController.bankLoot(inventory)
+				for loot in inventory:
+					emit_signal("lootDropped", loot)
+				inventory.clear()
+				if scanned:
+					scanned = false
+					emit_signal("resetScan")
+				
+				
+		ScrapCell.Type.CHARGE:
+			moveCount = 0
+			energy = maxEnergy
+			energyBar.value = energy
+		ScrapCell.Type.MAGNET:
+			cell.dropLoot(inventory)
+			for loot in inventory:
+				emit_signal("lootDropped", loot)
+			inventory.clear()
+			
 	
-	var totalCost = total_move_cost()
-	var lootTable = seaOfScrap.lootMap.get(position)
+	
+func processMagnet(lootTable: LootTable):
+	
 	if lootTable:
-		if energy > totalCost:
+		if energy > 0:
 			if magnetActive:
 				print("Loot table found for position ", position," ", lootTable)
 				var loot = lootTable.getRandomLoot()
@@ -131,7 +181,7 @@ func move(movement: Vector3):
 				if lootTable:
 					lootTable.addLoot(droppedLoot, 1)
 					emit_signal("lootDropped", droppedLoot)
-		elif inventory.size() > 0:
+		else:
 			magnetActive = false
 			magnet.visible = magnetActive
 			if inventory.size() > 0:
@@ -140,21 +190,6 @@ func move(movement: Vector3):
 				emit_signal("lootDropped", droppedLoot)
 				if lootTable:
 					lootTable.addLoot(droppedLoot, 1)
-		energy -= totalCost
-	
-	else:
-		if scanned:
-			scanned = false
-			emit_signal("resetScan")
-		GameController.bankLoot(inventory)
-		for loot in inventory:
-			emit_signal("lootDropped", loot)
-		inventory.clear()
-		energy = maxEnergy
-		magnetActive = false
-		magnet.visible = magnetActive
-
-	energyBar.value = energy
 	
 
 	

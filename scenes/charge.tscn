@@ -1,0 +1,53 @@
+[gd_scene format=4 uid="uid://c32o0oy3rx3ex"]
+
+[ext_resource type="Texture2D" uid="uid://bm3qdok3vs7sc" path="res://kenney_modular-dungeon-kit_1.0/Models/FBX format/Textures/colormap.png" id="1_jyajj"]
+[ext_resource type="PackedScene" uid="uid://bqhn0mi5u0cbq" path="res://kenney_conveyor-kit/Models/FBX format/structure-yellow-medium.fbx" id="2_25ywb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1g4f8"]
+resource_name = "colormap"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_jyajj")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_u2g26"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1e-05, 1),
+"format": 34359742465,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAACAAEAAQADAAAAAQAAAAMA"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAPwAAAAAAAAA/AAAAvwAAAAAAAAC/AAAAPwAAAAAAAAC/AAAAvwAAAAAAAAA/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_elw8m"]
+resource_name = "Scene"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1e-05, 1),
+"attribute_data": PackedByteArray("uB4FPgDXozukcL0+SOF6PrgeBT5I4Xo+pHC9PgDXozu4HgU+ANejO7geBT5I4Xo+pHC9Pkjhej6kcL0+ANejOw=="),
+"format": 34359742487,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMABAAFAAYABgAHAAQA"),
+"material": SubResource("StandardMaterial3D_1g4f8"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAPwAAAAAAAAA/AAAAvwAAAAAAAAC/AAAAPwAAAAAAAAC/AAAAvwAAAAAAAAA/AAAAPwAAAAAAAAA/AAAAPwAAAAAAAAC/AAAAvwAAAAAAAAC/AAAAvwAAAAAAAAA//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//fwAAAAD/P/9/AAAAAP8//38AAAAA/z//fwAAAAD/Pw==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_u2g26")
+
+[node name="Charge" type="Node3D" unique_id=1657123987]
+
+[node name="template-floor" type="MeshInstance3D" parent="." unique_id=685400336]
+mesh = SubResource("ArrayMesh_elw8m")
+skeleton = NodePath("")
+
+[node name="structure-yellow-medium2" parent="." unique_id=1988068183 instance=ExtResource("2_25ywb")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="structure-yellow-medium" parent="." unique_id=1439027456 instance=ExtResource("2_25ywb")]
