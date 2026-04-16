@@ -5,12 +5,16 @@ extends VBoxContainer
 # Added by Copilot
 func _ready() -> void:
 	add_to_group("spare_parts_inventory")
+	update_inventory_display()
+
+
+
+func update_inventory_display() -> void:
 	for child in get_children():
 		if child is Control and child.has_method("setupCard"):
 			child.queue_free()
-	for part: SparePart in GameController.fightInventory:
+	for part in GameController.fightInventory:
 		add_part_card(part)
-
 # Added by Copilot
 func add_part_card(part: SparePart) -> void:
 	if part == null:

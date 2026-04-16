@@ -3,12 +3,14 @@
 [ext_resource type="Script" uid="uid://kkvk225iraye" path="res://scripts/fighterSlot.gd" id="1_6xnox"]
 
 [node name="FighterSlot" type="Control" unique_id=1661540380]
+self_modulate = Color(0, 0, 1, 1)
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_6xnox")
 
 [node name="SlotPanel" type="Panel" parent="." unique_id=604401819]
+self_modulate = Color(0, 0, 1, 1)
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 0
 offset_top = 4.0

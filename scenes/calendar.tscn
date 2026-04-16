@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://cxmthkesnthes"]
+
+[ext_resource type="Script" uid="uid://d1npu4ydsmiwb" path="res://scenes/calendar.gd" id="1_o53js"]
+[ext_resource type="FontFile" uid="uid://bekekmo1sb26a" path="res://kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="2_vrnb8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yxtdx"]
+font = ExtResource("2_vrnb8")
+
+[sub_resource type="LabelSettings" id="LabelSettings_r1nev"]
+font = ExtResource("2_vrnb8")
+font_size = 10
+
+[node name="Calendar" type="HBoxContainer" unique_id=665588515 node_paths=PackedStringArray("dayCards")]
+top_level = true
+size_flags_horizontal = 4
+script = ExtResource("1_o53js")
+dayCards = [NodePath("Day1Panel"), NodePath("Day2Panel"), NodePath("Day3Panel"), NodePath("Day4Panel"), NodePath("Day5Panel")]
+
+[node name="Day1Panel" type="Panel" parent="." unique_id=1902671003]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+
+[node name="DayLayout" type="VBoxContainer" parent="Day1Panel" unique_id=1668560583]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -31.0
+offset_right = 26.5
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DayLabel" type="Label" parent="Day1Panel/DayLayout" unique_id=1823709267]
+layout_mode = 2
+text = "Day 1"
+label_settings = SubResource("LabelSettings_yxtdx")
+
+[node name="ActivityLabel" type="Label" parent="Day1Panel/DayLayout" unique_id=1052378901]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "Fishing for loot"
+label_settings = SubResource("LabelSettings_r1nev")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Day2Panel" type="Panel" parent="." unique_id=1678086201]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+
+[node name="DayLayout" type="VBoxContainer" parent="Day2Panel" unique_id=1726256170]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -31.0
+offset_right = 26.5
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DayLabel" type="Label" parent="Day2Panel/DayLayout" unique_id=1026160930]
+layout_mode = 2
+text = "Day 2"
+label_settings = SubResource("LabelSettings_yxtdx")
+
+[node name="ActivityLabel" type="Label" parent="Day2Panel/DayLayout" unique_id=2105346371]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "Fight Night"
+label_settings = SubResource("LabelSettings_r1nev")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Day3Panel" type="Panel" parent="." unique_id=1309653637]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+
+[node name="DayLayout" type="VBoxContainer" parent="Day3Panel" unique_id=763812827]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -31.0
+offset_right = 26.5
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DayLabel" type="Label" parent="Day3Panel/DayLayout" unique_id=255907395]
+layout_mode = 2
+text = "Day 3"
+label_settings = SubResource("LabelSettings_yxtdx")
+
+[node name="ActivityLabel" type="Label" parent="Day3Panel/DayLayout" unique_id=751988981]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "Fishing for loot"
+label_settings = SubResource("LabelSettings_r1nev")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Day4Panel" type="Panel" parent="." unique_id=395327731]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+
+[node name="DayLayout" type="VBoxContainer" parent="Day4Panel" unique_id=926435871]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -31.0
+offset_right = 26.5
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DayLabel" type="Label" parent="Day4Panel/DayLayout" unique_id=381820835]
+layout_mode = 2
+text = "Day 4"
+label_settings = SubResource("LabelSettings_yxtdx")
+
+[node name="ActivityLabel" type="Label" parent="Day4Panel/DayLayout" unique_id=1452906977]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "Fishing for loot"
+label_settings = SubResource("LabelSettings_r1nev")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Day5Panel" type="Panel" parent="." unique_id=1674680119]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+
+[node name="DayLayout" type="VBoxContainer" parent="Day5Panel" unique_id=961225953]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -31.0
+offset_right = 26.5
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DayLabel" type="Label" parent="Day5Panel/DayLayout" unique_id=141256972]
+layout_mode = 2
+text = "Day 5"
+label_settings = SubResource("LabelSettings_yxtdx")
+
+[node name="ActivityLabel" type="Label" parent="Day5Panel/DayLayout" unique_id=787505701]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "MAIN EVENT"
+label_settings = SubResource("LabelSettings_r1nev")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

@@ -16,8 +16,13 @@ func _ready() -> void:
 		if child is Control and child.has_method("setupCard"):
 			child.queue_free()
 	# Added by Copilot
-	for robot: Robot in GameController.fightRoster:
+	update_roster_display()
+
+func update_roster_display() -> void:
+	for robot in GameController.fightRoster:
+		print("Adding robot to roster display: ", robot.name)
 		add_robot_card(robot)
+
 
 # Added by Copilot
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
@@ -54,12 +59,15 @@ func _has_robot_card(robot: Robot) -> bool:
 # Added by Copilot
 func add_robot_card(robot: Robot) -> void:
 	if robot == null:
+		print("Error: Attempted to add null robot to roster")
 		return
 	if _has_robot_card(robot):
+		print("Robot card already exists in roster: ", robot.name)
 		return
 	if fighterCardScene == null:
+		print("Error: fighterCardScene is not set in FighterRoster")
 		return
-
+	print("Adding robot card to roster: ", robot.name)
 	var fighter_card := fighterCardScene.instantiate()
 	if fighter_card is Control and fighter_card.has_method("setupCard"):
 		fighter_card.setupCard(robot)
@@ -69,5 +77,6 @@ func add_robot_card(robot: Robot) -> void:
 func remove_robot_card(robot: Robot) -> void:
 	for child in get_children():
 		if child is Control and child.has_method("setupCard") and child.get("robotCard") == robot:
+			print("Removing robot card from roster: ", robot.name)
 			child.queue_free()
 			return

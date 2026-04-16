@@ -5,13 +5,14 @@ class_name LootTable
 
 func getRandomLoot() -> Loot:
 	var totalWeight = loot.values().reduce(func(total, weight): return total + weight, 0)
-	var randomWeight = randi() % totalWeight
-	
-	for lootItem in loot.keys():
-		randomWeight -= loot[lootItem]
-		if randomWeight < 0:
-			if lootItem.cardTier.tierIndex >= 0:
-				return lootItem
+	var lootArray: Array = []
+	for lootItem in loot:
+		for i in range(loot[lootItem]):
+			lootArray.append(lootItem)
+	print("Total loot weight: ", totalWeight)
+	print("Loot array size: ", lootArray.size())
+	if lootArray.size() > 0:
+		return lootArray.pick_random()
 	return null
 
 func addLoot(droppedLoot: Loot, count: int):

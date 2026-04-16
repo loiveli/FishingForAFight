@@ -35,6 +35,9 @@ movie_writer/movie_file="D:/Godot/recording.avi"
 
 MagnetBoat=""
 CardPopup=""
+Calendar=""
+FightClub=""
+UIControl=""
 
 [input]
 

@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_ibvu8")
 lootTable = ExtResource("1_h0tsj")
-tier = 0
 cellType = 1
 gridTileID = 1
+moveCost = 0
 metadata/_custom_type_script = "uid://dtgu2fbss6jun"

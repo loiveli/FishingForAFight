@@ -3,10 +3,14 @@
 [ext_resource type="Script" uid="uid://b70rpx8akxmet" path="res://scripts/card_popup.gd" id="1_so7cm"]
 [ext_resource type="PackedScene" uid="uid://bse4exjynwufc" path="res://scenes/fighter_card.tscn" id="2_aegck"]
 [ext_resource type="FontFile" uid="uid://co8vmb8uaplfd" path="res://kenney_ui-pack-space-expansion/Font/Kenney Future Narrow.ttf" id="2_lrh34"]
-[ext_resource type="Texture2D" uid="uid://dvrcsxvqyy4gi" path="res://sprites/magnet.svg" id="3_aegck"]
 [ext_resource type="PackedScene" uid="uid://0cwpl8qrde64" path="res://scenes/part_card.tscn" id="3_vn4v8"]
+[ext_resource type="FontFile" uid="uid://bekekmo1sb26a" path="res://kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="4_aegck"]
 
-[node name="CardPopup" type="Panel" unique_id=722414133 node_paths=PackedStringArray("cardLayout")]
+[sub_resource type="LabelSettings" id="LabelSettings_vn4v8"]
+font = ExtResource("4_aegck")
+font_size = 30
+
+[node name="TripSummary" type="Panel" unique_id=722414133 node_paths=PackedStringArray("cardLayout")]
 custom_minimum_size = Vector2(1000, 500)
 anchors_preset = 8
 anchor_left = 0.5
@@ -39,6 +43,12 @@ offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Label" type="Label" parent="PopupLayout" unique_id=2043469871]
+layout_mode = 2
+text = "Day 1 complete"
+label_settings = SubResource("LabelSettings_vn4v8")
+horizontal_alignment = 1
+
 [node name="CardLayout" type="HBoxContainer" parent="PopupLayout" unique_id=1346011536]
 custom_minimum_size = Vector2(1000, 300)
 layout_mode = 2
@@ -51,7 +61,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_lrh34")
 theme_override_font_sizes/font_size = 24
-text = "Confirm"
-icon = ExtResource("3_aegck")
+text = "Proceed"
 
 [connection signal="pressed" from="PopupLayout/Confirm" to="." method="closePopup"]

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b1e5pvovis00y"]
 
+[ext_resource type="Theme" uid="uid://bfuvwergfvwsu" path="res://Resources/UITheme.tres" id="1_4g63u"]
 [ext_resource type="PackedScene" uid="uid://bse4exjynwufc" path="res://scenes/fighter_card.tscn" id="1_avy66"]
 [ext_resource type="Script" uid="uid://ciexebmk7g6lw" path="res://scripts/fight_club.gd" id="1_q3m0n"]
 [ext_resource type="FontFile" uid="uid://co8vmb8uaplfd" path="res://kenney_ui-pack-space-expansion/Font/Kenney Future Narrow.ttf" id="2_vjkvg"]
@@ -15,21 +16,20 @@
 font = ExtResource("2_vjkvg")
 font_size = 50
 
-[node name="FightClub" type="Control" unique_id=1034542465]
+[node name="FightClub" type="Control" unique_id=1034542465 node_paths=PackedStringArray("roster", "inventory")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_4g63u")
 script = ExtResource("1_q3m0n")
-teamABox = NodePath("FightPanel/FightPanelLayout/Team A")
-teamBBox = NodePath("FightPanel/FightPanelLayout/Team B")
-battleButton = NodePath("FightPanel/FightPanelLayout/BattleControls/BattleButton")
-scoreLabel = NodePath("FightPanel/FightPanelLayout/BattleControls/ScoreLabel")
-rewardBar = NodePath("FightPanel/FightPanelLayout/BattleControls/RewardBar")
+roster = NodePath("FightPanel/FightPanelLayout/Roster/RobotList")
+inventory = NodePath("FightPanel/FightPanelLayout/Parts/PartList")
 
 [node name="FightPanel" type="Panel" parent="." unique_id=1493131791]
+top_level = true
 custom_minimum_size = Vector2(1000, 600)
 layout_mode = 1
 anchors_preset = 15

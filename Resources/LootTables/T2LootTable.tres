@@ -11,8 +11,8 @@
 [resource]
 script = ExtResource("2_xmrwi")
 loot = Dictionary[ExtResource("1_nj626"), int]({
-ExtResource("2_lb0aq"): 4,
-ExtResource("3_uvobq"): 10,
+ExtResource("2_lb0aq"): 6,
+ExtResource("3_uvobq"): 8,
 ExtResource("4_alygw"): 4,
 ExtResource("5_k08eq"): 1,
 ExtResource("6_5lp0x"): 1

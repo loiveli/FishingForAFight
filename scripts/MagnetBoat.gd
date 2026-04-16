@@ -2,7 +2,7 @@ extends Node3D
 
 @export var energyBar: TextureProgressBar
 
-var maxEnergy: int = 25
+var maxEnergy: int = 15
 var energy: int = maxEnergy
 
 @export var magnet: TextureRect
@@ -25,40 +25,12 @@ var magnetActive: bool = false
 
 @export var inventoryUI: VBoxContainer
 
-var _base_energy_bar_width: float = 0.0
+@export var energyLabel: Label
 
 
 func _ready():
-	_sync_max_energy_from_progress()
 	magnet.visible = magnetActive
 
-# Added by Copilot
-func _sync_max_energy_from_progress() -> void:
-	maxEnergy = GameController.get_max_energy()
-	energy = maxEnergy
-	if energyBar != null:
-		if _base_energy_bar_width <= 0.0:
-			_base_energy_bar_width = energyBar.size.x
-		var segment_width: float = _base_energy_bar_width / float(GameController.BASE_MAX_ENERGY)
-		energyBar.custom_minimum_size.x = segment_width * float(maxEnergy)
-		energyBar.size.x = energyBar.custom_minimum_size.x
-		_update_energy_bar_atlas_regions()
-		energyBar.max_value = maxEnergy
-		energyBar.value = energy
-
-# Added by Copilot
-func _update_energy_bar_atlas_regions() -> void:
-	if energyBar == null:
-		return
-	var region_width: float = 48.0 * float(maxEnergy)
-	if energyBar.texture_under is AtlasTexture:
-		var under_texture: AtlasTexture = energyBar.texture_under.duplicate()
-		under_texture.region = Rect2(0, 0, region_width, 48)
-		energyBar.texture_under = under_texture
-	if energyBar.texture_progress is AtlasTexture:
-		var progress_texture: AtlasTexture = energyBar.texture_progress.duplicate()
-		progress_texture.region = Rect2(0, 0, region_width, 48)
-		energyBar.texture_progress = progress_texture
 
 
 func _process(delta):
@@ -93,6 +65,8 @@ func handle_input(_delta):
 		emit_signal("lootScanned", position)
 		energy -= 1
 		energyBar.value = energy
+		energyLabel.text = str(energy)
+
 		scanned = true
 
 
@@ -117,7 +91,12 @@ func moveBoat(movement: Vector3):
 	if newCell:
 		var total_Cost = magnetCost + newCell.moveCost
 		energy -= total_Cost
+		if energy <= 0:
+			energy = 0
+			magnetActive = false
+			magnet.visible = magnetActive
 		energyBar.value = energy
+		energyLabel.text = str(energy)
 		position += movement
 		processCell(newCell)
 	

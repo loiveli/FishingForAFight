@@ -5,12 +5,14 @@
 [ext_resource type="Resource" uid="uid://ch3bd5pc6y424" path="res://Resources/Loot/Scrap.tres" id="2_j11yq"]
 [ext_resource type="Resource" uid="uid://mf0my107jsdq" path="res://Resources/Loot/Empty.tres" id="3_cnoxv"]
 [ext_resource type="Resource" uid="uid://dhs6am6o6w7te" path="res://Resources/Loot/SparePart.tres" id="4_lwyo5"]
+[ext_resource type="Resource" uid="uid://c6esdx8fvkq2m" path="res://Resources/Loot/Tier1Robot.tres" id="5_l4y4p"]
 
 [resource]
 script = ExtResource("2_6btyw")
 loot = Dictionary[ExtResource("1_m1n5w"), int]({
-ExtResource("2_j11yq"): 8,
+ExtResource("2_j11yq"): 4,
 ExtResource("3_cnoxv"): 8,
-ExtResource("4_lwyo5"): 2
+ExtResource("4_lwyo5"): 4,
+ExtResource("5_l4y4p"): 4
 })
 metadata/_custom_type_script = "uid://b6x66w53yv4i1"

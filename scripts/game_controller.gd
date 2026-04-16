@@ -11,54 +11,69 @@ signal processCard(card:Resource)
 
 const BASE_MAX_ENERGY: int = 25
 
+@export var currentDay: int = 1
+
 @export var fishInventory: Array[Loot] = []
+
+@export var calendar: HBoxContainer
+
+@export var uiControl: Control
+
+@export var fightClub: Control
 
 @export var fightInventory: Array[SparePart]
 @export var fightRoster: Array[Robot]
 @export var totalEnergyBonus: int = 0
 
+@export var money: int = 100
+
 func _ready():
-	_seed_initial_roster()
-	_resolve_scene_nodes()
+	if not cardPopup:
+		cardPopup = get_tree().get_first_node_in_group("CardPopup") as Panel
 
-# Added by Copilot
-func _seed_initial_roster() -> void:
-	if not fightRoster.is_empty():
-		return
+	if not fightClub:
+		fightClub = get_tree().get_first_node_in_group("FightClub") as Control
+	
+	if not magnetBoat:
+		magnetBoat = get_tree().get_first_node_in_group("MagnetBoat") as Node3D
 
-	var seen_keys: Dictionary = {}
-	for robot_template: Robot in robotPool:
-		if robot_template == null:
-			continue
-		if robot_template.cardTier.tierIndex != 1:
-			continue
+	if not calendar:
+		calendar = get_tree().get_first_node_in_group("Calendar") as HBoxContainer
 
-		var key: String = "%s_%d" % [robot_template.name, int(robot_template.type)]
-		if seen_keys.has(key):
-			continue
+	if not uiControl:
+		uiControl = get_tree().get_first_node_in_group("UIControl") as Control
 
-		var seeded_robot: Robot = robot_template.duplicate(true)
-		fightRoster.append(seeded_robot)
-		seen_keys[key] = true
 
-# Added by Copilot
-func _resolve_scene_nodes() -> void:
-	if magnetBoat == null or not is_instance_valid(magnetBoat):
-		magnetBoat = get_tree().get_first_node_in_group("MagnetBoat")
-	if cardPopup == null or not is_instance_valid(cardPopup):
-		cardPopup = get_tree().get_first_node_in_group("CardPopup")
 
 func bankLoot(loot: Array[Loot]):
-	if loot.is_empty():
-		return
-	_resolve_scene_nodes()
-	fishInventory.append_array(loot)
+	print("Banking loot: ", loot)
+	print("Card Popup: ", cardPopup, " | Valid: ", is_instance_valid(cardPopup))
+	print(cardPopup != null,is_instance_valid(cardPopup))
 	if cardPopup != null and is_instance_valid(cardPopup):
 		cardPopup.visible = true
 	if magnetBoat != null and is_instance_valid(magnetBoat):
 		magnetBoat.canMove = false
 	processLoot(loot)
-	fishInventory.clear()
+
+
+func proceedDay():
+	if calendar != null and is_instance_valid(calendar):
+		currentDay += 1
+		calendar.updateDay(currentDay)
+	if currentDay == 2 || currentDay == 5:
+		fightClub.visible = true
+		fightClub.openFightClub()
+		magnetBoat.canMove = false
+		uiControl.visible = false
+	else:
+		if currentDay > 5:
+			currentDay = 1
+		magnetBoat.energy = magnetBoat.maxEnergy
+		magnetBoat.energyBar.value = magnetBoat.energy
+		magnetBoat.energyLabel.text = str(magnetBoat.energy)
+		fightClub.visible = false
+		magnetBoat.canMove = true
+		uiControl.visible = true
 
 
 func processLoot(loot: Array[Loot]):
@@ -72,12 +87,14 @@ func processLoot(loot: Array[Loot]):
 				continue
 			var robot: Robot = robot_template.duplicate(true)
 			fightRoster.append(robot)
+			print("Added robot to roster: ", robot)
 			emit_signal("processCard", robot)
 		elif item.type == Loot.LootType.SPAREPART:
 			var part_template: SparePart = partPool.filter(func(p): return p.cardTier.tierIndex == item.cardTier.tierIndex).pick_random()
 			if part_template == null:
 				continue
 			var part: SparePart = part_template.duplicate(true)
+			print("Adding part to fight inventory: ", part)
 			fightInventory.append(part)
 			emit_signal("processCard", part)
 
@@ -124,8 +141,8 @@ func create_spare_part_from_tier(tier: CardTier) -> SparePart:
 
 # Added by Copilot
 func register_fight_energy_reward(stars: int) -> void:
-	totalEnergyBonus += max(0, stars)
+	magnetBoat.maxEnergy += max(0, stars)*3
 
 # Added by Copilot
 func get_max_energy() -> int:
-	return BASE_MAX_ENERGY + totalEnergyBonus
+	return magnetBoat.maxEnergy

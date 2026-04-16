@@ -1,0 +1,10 @@
+[gd_resource type="Theme" format=3 uid="uid://bfuvwergfvwsu"]
+
+[ext_resource type="FontFile" uid="uid://bekekmo1sb26a" path="res://kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="1_jfdbo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfdbo"]
+bg_color = Color(0.19434929, 0.19434926, 0.19434926, 1)
+
+[resource]
+default_font = ExtResource("1_jfdbo")
+Panel/styles/panel = SubResource("StyleBoxFlat_jfdbo")

@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("2_6btyw")
 loot = Dictionary[ExtResource("1_m1n5w"), int]({
-ExtResource("3_cnoxv"): 15,
-ExtResource("2_j11yq"): 5
+ExtResource("3_cnoxv"): 12,
+ExtResource("2_j11yq"): 8
 })
 metadata/_custom_type_script = "uid://b6x66w53yv4i1"

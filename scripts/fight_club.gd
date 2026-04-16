@@ -6,6 +6,8 @@ extends Control
 @export var scoreLabel: Label
 @export var rewardBar: TextureProgressBar
 @export var actionDelaySeconds: float = 1.0
+@export var roster: VBoxContainer
+@export var inventory: VBoxContainer
 
 signal battle_finished(winning_team: int)
 
@@ -32,13 +34,12 @@ func _ready() -> void:
 
 	# Added by Copilot
 	var battle_controls := get_node_or_null("FightPanel/FightPanelLayout/BattleControls")
-	if battle_controls != null:
-		var back_btn := Button.new()
-		back_btn.text = "Back to Sea"
-		back_btn.pressed.connect(_go_back_to_sea)
-		battle_controls.add_child(back_btn)
-
 	_update_score_label(0, 0.0)
+
+func openFightClub() -> void:
+	visible = true
+	roster.update_roster_display()
+	inventory.update_inventory_display()
 
 # Added by Copilot
 func start_battle() -> int:
@@ -378,18 +379,13 @@ func _show_battle_status(message: String) -> void:
 	scoreLabel.text = message
 
 # Added by Copilot
-func _go_back_to_sea() -> void:
-	if _battleInProgress:
-		return
-	get_tree().change_scene_to_file("res://scenes/SeaOfScrap.tscn")
-
-# Added by Copilot
 func _on_battle_button_pressed() -> void:
 	if _battleInProgress:
 		return
 	if battleButton != null:
 		battleButton.disabled = true
 	await start_battle()
+	GameController.proceedDay()
 	if battleButton != null:
 		battleButton.disabled = false
 

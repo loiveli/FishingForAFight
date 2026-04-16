@@ -39,19 +39,25 @@
 [ext_resource type="AudioStream" uid="uid://wvfsgkl8qob6" path="res://sounds/ambience.ogg" id="24_y6deb"]
 [ext_resource type="Resource" uid="uid://dhlvpetwassoc" path="res://Resources/Tiers/Tier4.tres" id="25_ai81n"]
 [ext_resource type="Texture2D" uid="uid://cft0uiiflp6tg" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_d.png" id="25_faesd"]
-[ext_resource type="Resource" uid="uid://ba50swa8qolkr" path="res://Resources/SpareParts/BasicAttackPart.tres" id="26_2f3dj"]
 [ext_resource type="Script" uid="uid://glwf6afe4due" path="res://scripts/ui.gd" id="26_ai81n"]
-[ext_resource type="Script" uid="uid://bs7qc6ep080nk" path="res://scripts/SparePart.gd" id="26_dgi5k"]
 [ext_resource type="FontFile" uid="uid://bekekmo1sb26a" path="res://kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="26_gskbp"]
 [ext_resource type="Texture2D" uid="uid://c2qyxmfrewxak" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_space.png" id="27_mu8ct"]
-[ext_resource type="Resource" uid="uid://cqh8um8l25ugd" path="res://Resources/SpareParts/BasicHealthPart.tres" id="27_yq6so"]
+[ext_resource type="PackedScene" uid="uid://b1e5pvovis00y" path="res://scenes/FightClub.tscn" id="28_a6tpp"]
 [ext_resource type="Texture2D" uid="uid://bbhemvbqd48a2" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_e.png" id="28_dpsds"]
 [ext_resource type="Texture2D" uid="uid://c5smvvg2cfelc" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Double/keyboard_tab.png" id="29_05ahd"]
 [ext_resource type="Script" uid="uid://dfgltwm20yw6b" path="res://scripts/mobile_ui.gd" id="30_gskbp"]
+[ext_resource type="Theme" uid="uid://bfuvwergfvwsu" path="res://Resources/UITheme.tres" id="30_kgdq1"]
 [ext_resource type="Texture2D" uid="uid://btbr8igxaptbo" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Vector/keyboard_arrow_up.svg" id="31_mu8ct"]
 [ext_resource type="Texture2D" uid="uid://kf07jc7ret0c" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_arrow_left.png" id="32_dpsds"]
 [ext_resource type="Texture2D" uid="uid://cero64g56b5vf" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_arrow_down.png" id="33_05ahd"]
 [ext_resource type="Texture2D" uid="uid://cmlnmwf3sqi46" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_arrow_right.png" id="34_2k0bm"]
+[ext_resource type="PackedScene" uid="uid://cxmthkesnthes" path="res://scenes/calendar.tscn" id="49_hou0l"]
+[ext_resource type="Script" uid="uid://v8frponxyegr" path="res://scripts/Loot.gd" id="53_a6tpp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kgdq1"]
+font = ExtResource("26_gskbp")
+font_size = 30
+font_color = Color(0, 1, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2k0bm"]
 font = ExtResource("26_gskbp")
@@ -61,13 +67,14 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="SeaOfScrap" type="Node3D" unique_id=962874955]
 
-[node name="MagnetBoat" type="Node3D" parent="." unique_id=113217831 node_paths=PackedStringArray("energyBar", "magnet", "seaOfScrap", "inventoryUI") groups=["MagnetBoat"]]
+[node name="MagnetBoat" type="Node3D" parent="." unique_id=113217831 node_paths=PackedStringArray("energyBar", "magnet", "seaOfScrap", "inventoryUI", "energyLabel") groups=["MagnetBoat"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 script = ExtResource("1_tefeu")
-energyBar = NodePath("../UI/EnergyBar")
-magnet = NodePath("../UI/Magnet")
+energyBar = NodePath("../UI/UIControl/HBoxContainer/EnergyBar")
+magnet = NodePath("../UI/UIControl/Magnet")
 seaOfScrap = NodePath("../SeaOfScrapGrid")
-inventoryUI = NodePath("../UI/Inventory")
+inventoryUI = NodePath("../UI/UIControl/Inventory")
+energyLabel = NodePath("../UI/UIControl/HBoxContainer/EnergyCount")
 
 [node name="MagnetBoatModel" parent="MagnetBoat" unique_id=817961757 instance=ExtResource("7_o6xl0")]
 
@@ -117,30 +124,58 @@ shadow_opacity = 0.11
 [node name="UI" type="CanvasLayer" parent="." unique_id=662846687]
 script = ExtResource("26_ai81n")
 
-[node name="EnergyBar" type="TextureProgressBar" parent="UI" unique_id=1766006297]
+[node name="Calendar" parent="UI" unique_id=665588515 groups=["Calendar"] instance=ExtResource("49_hou0l")]
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -316.0
+offset_bottom = 80.0
+grow_horizontal = 0
+
+[node name="FightClub" parent="UI" unique_id=1034542465 groups=["FightClub"] instance=ExtResource("28_a6tpp")]
+visible = false
+
+[node name="UIControl" type="Control" parent="UI" unique_id=786671690 groups=["UIControl"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("30_kgdq1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/UIControl" unique_id=122073974]
+custom_minimum_size = Vector2(750, 60)
+layout_mode = 0
+offset_left = 30.0
+offset_top = 40.0
+offset_right = 780.0
+offset_bottom = 100.0
+
+[node name="EnergyLabel" type="Label" parent="UI/UIControl/HBoxContainer" unique_id=547901141]
+layout_mode = 2
+text = "Energy:"
+label_settings = ExtResource("8_trceg")
+
+[node name="EnergyBar" type="TextureProgressBar" parent="UI/UIControl/HBoxContainer" unique_id=1766006297]
 texture_repeat = 2
-offset_left = 31.0
-offset_top = 42.0
-offset_right = 645.0
-offset_bottom = 76.0
-max_value = 25.0
-value = 25.0
+custom_minimum_size = Vector2(600, 40)
+layout_mode = 2
+max_value = 15.0
+value = 15.0
 rounded = true
 allow_greater = true
 nine_patch_stretch = true
 texture_under = ExtResource("6_ya4ey")
 texture_progress = ExtResource("7_eb6dy")
 
-[node name="Label" type="Label" parent="UI" unique_id=547901141]
-offset_left = 33.0
-offset_top = 20.0
-offset_right = 119.0
-offset_bottom = 38.0
-text = "Energy:"
-label_settings = ExtResource("8_trceg")
+[node name="EnergyCount" type="Label" parent="UI/UIControl/HBoxContainer" unique_id=1949834258]
+layout_mode = 2
+text = "15"
+label_settings = SubResource("LabelSettings_kgdq1")
 
-[node name="Magnet" type="TextureRect" parent="UI" unique_id=1119622370]
+[node name="Magnet" type="TextureRect" parent="UI/UIControl" unique_id=1119622370]
 visible = false
+layout_mode = 0
 offset_left = 1047.0
 offset_top = 50.0
 offset_right = 1119.0
@@ -150,41 +185,49 @@ expand_mode = 4
 stretch_mode = 2
 flip_v = true
 
-[node name="Inventory" type="VBoxContainer" parent="UI" unique_id=411455471 node_paths=PackedStringArray("magnetBoat", "lowWeightHolder", "highWeightHolder")]
+[node name="Inventory" type="VBoxContainer" parent="UI/UIControl" unique_id=411455471 node_paths=PackedStringArray("magnetBoat", "lowWeightHolder", "highWeightHolder")]
 custom_minimum_size = Vector2(120, 0)
+layout_mode = 0
 offset_left = 1024.0
 offset_top = 124.0
 offset_right = 1144.0
 offset_bottom = 604.0
 script = ExtResource("14_jkv2x")
 lootCardScene = ExtResource("10_jkv2x")
-magnetBoat = NodePath("../../MagnetBoat")
+magnetBoat = NodePath("../../../MagnetBoat")
 lowWeightHolder = NodePath("1WeightLoot")
 highWeightHolder = NodePath("2WeightLoot")
 
-[node name="1WeightLoot" type="VBoxContainer" parent="UI/Inventory" unique_id=1772669505]
+[node name="1WeightLoot" type="VBoxContainer" parent="UI/UIControl/Inventory" unique_id=1772669505]
 layout_mode = 2
 
-[node name="2WeightLoot" type="VBoxContainer" parent="UI/Inventory" unique_id=1881598692]
+[node name="2WeightLoot" type="VBoxContainer" parent="UI/UIControl/Inventory" unique_id=1881598692]
 layout_mode = 2
 
-[node name="CardPopup" parent="UI" unique_id=722414133 groups=["CardPopup"] instance=ExtResource("16_whvey")]
+[node name="TripSummary" parent="UI/UIControl" unique_id=722414133 groups=["CardPopup"] instance=ExtResource("16_whvey")]
 visible = false
+layout_mode = 1
+offset_left = 56.0
+offset_top = 54.0
+offset_right = 1056.0
+offset_bottom = 554.0
 
-[node name="UIInstructions" type="VBoxContainer" parent="UI" unique_id=1550378504]
+[node name="UIInstructions" type="VBoxContainer" parent="UI/UIControl" unique_id=1550378504]
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
+offset_top = 404.0
+offset_right = 308.0
+offset_bottom = 608.0
 grow_vertical = 0
 script = ExtResource("21_8kpcj")
 
-[node name="MovementInstructions" type="HBoxContainer" parent="UI/UIInstructions" unique_id=36694999]
+[node name="MovementInstructions" type="HBoxContainer" parent="UI/UIControl/UIInstructions" unique_id=36694999]
 layout_mode = 2
 theme_override_constants/separation = -8
 
-[node name="W" type="TextureRect" parent="UI/UIInstructions/MovementInstructions" unique_id=1235975095]
+[node name="W" type="TextureRect" parent="UI/UIControl/UIInstructions/MovementInstructions" unique_id=1235975095]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -192,7 +235,7 @@ size_flags_vertical = 4
 texture = ExtResource("22_lrmns")
 expand_mode = 1
 
-[node name="A" type="TextureRect" parent="UI/UIInstructions/MovementInstructions" unique_id=1566370933]
+[node name="A" type="TextureRect" parent="UI/UIControl/UIInstructions/MovementInstructions" unique_id=1566370933]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -200,7 +243,7 @@ size_flags_vertical = 4
 texture = ExtResource("23_sb4qk")
 expand_mode = 1
 
-[node name="S" type="TextureRect" parent="UI/UIInstructions/MovementInstructions" unique_id=1423213541]
+[node name="S" type="TextureRect" parent="UI/UIControl/UIInstructions/MovementInstructions" unique_id=1423213541]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -208,7 +251,7 @@ size_flags_vertical = 4
 texture = ExtResource("24_30kbt")
 expand_mode = 1
 
-[node name="D" type="TextureRect" parent="UI/UIInstructions/MovementInstructions" unique_id=2071706331]
+[node name="D" type="TextureRect" parent="UI/UIControl/UIInstructions/MovementInstructions" unique_id=2071706331]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -216,16 +259,16 @@ size_flags_vertical = 4
 texture = ExtResource("25_faesd")
 expand_mode = 1
 
-[node name="MoveLabel" type="Label" parent="UI/UIInstructions/MovementInstructions" unique_id=1962262189]
+[node name="MoveLabel" type="Label" parent="UI/UIControl/UIInstructions/MovementInstructions" unique_id=1962262189]
 layout_mode = 2
 text = "  Move boat"
 label_settings = SubResource("LabelSettings_2k0bm")
 
-[node name="MagnetInstructions" type="HBoxContainer" parent="UI/UIInstructions" unique_id=1090191413]
+[node name="MagnetInstructions" type="HBoxContainer" parent="UI/UIControl/UIInstructions" unique_id=1090191413]
 layout_mode = 2
 theme_override_constants/separation = -8
 
-[node name="Space" type="TextureRect" parent="UI/UIInstructions/MagnetInstructions" unique_id=1587575586]
+[node name="Space" type="TextureRect" parent="UI/UIControl/UIInstructions/MagnetInstructions" unique_id=1587575586]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -233,16 +276,16 @@ size_flags_vertical = 4
 texture = ExtResource("27_mu8ct")
 expand_mode = 1
 
-[node name="MagnetLabel" type="Label" parent="UI/UIInstructions/MagnetInstructions" unique_id=1378334603]
+[node name="MagnetLabel" type="Label" parent="UI/UIControl/UIInstructions/MagnetInstructions" unique_id=1378334603]
 layout_mode = 2
 text = "  Toggle magnet"
 label_settings = SubResource("LabelSettings_2k0bm")
 
-[node name="ScanInstructions" type="HBoxContainer" parent="UI/UIInstructions" unique_id=735350356]
+[node name="ScanInstructions" type="HBoxContainer" parent="UI/UIControl/UIInstructions" unique_id=735350356]
 layout_mode = 2
 theme_override_constants/separation = -8
 
-[node name="E" type="TextureRect" parent="UI/UIInstructions/ScanInstructions" unique_id=46456402]
+[node name="E" type="TextureRect" parent="UI/UIControl/UIInstructions/ScanInstructions" unique_id=46456402]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -250,16 +293,16 @@ size_flags_vertical = 4
 texture = ExtResource("28_dpsds")
 expand_mode = 1
 
-[node name="ScanLabel" type="Label" parent="UI/UIInstructions/ScanInstructions" unique_id=1619267503]
+[node name="ScanLabel" type="Label" parent="UI/UIControl/UIInstructions/ScanInstructions" unique_id=1619267503]
 layout_mode = 2
 text = "  Scan for loot"
 label_settings = SubResource("LabelSettings_2k0bm")
 
-[node name="ToggleInstructions" type="HBoxContainer" parent="UI/UIInstructions" unique_id=2018137488]
+[node name="ToggleInstructions" type="HBoxContainer" parent="UI/UIControl/UIInstructions" unique_id=2018137488]
 layout_mode = 2
 theme_override_constants/separation = -8
 
-[node name="Tab" type="TextureRect" parent="UI/UIInstructions/ToggleInstructions" unique_id=1298330618]
+[node name="Tab" type="TextureRect" parent="UI/UIControl/UIInstructions/ToggleInstructions" unique_id=1298330618]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -267,14 +310,14 @@ size_flags_vertical = 4
 texture = ExtResource("29_05ahd")
 expand_mode = 1
 
-[node name="ToggleUILabel" type="Label" parent="UI/UIInstructions/ToggleInstructions" unique_id=1419219597]
+[node name="ToggleUILabel" type="Label" parent="UI/UIControl/UIInstructions/ToggleInstructions" unique_id=1419219597]
 layout_mode = 2
 text = "  Toggle controls"
 label_settings = SubResource("LabelSettings_2k0bm")
 
-[node name="MobileUI" type="Control" parent="UI" unique_id=121278463 node_paths=PackedStringArray("move_up_btn", "move_down_btn", "move_left_btn", "move_right_btn", "scan_btn", "magnet_btn")]
+[node name="MobileUI" type="Control" parent="UI/UIControl" unique_id=121278463 node_paths=PackedStringArray("move_up_btn", "move_down_btn", "move_left_btn", "move_right_btn", "scan_btn", "magnet_btn")]
 visible = false
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -288,7 +331,7 @@ move_right_btn = NodePath("MoveButtons/HBoxContainer/MoveRight")
 scan_btn = NodePath("ScanButton")
 magnet_btn = NodePath("MagnetButton")
 
-[node name="MoveButtons" type="VBoxContainer" parent="UI/MobileUI" unique_id=1747387343]
+[node name="MoveButtons" type="VBoxContainer" parent="UI/UIControl/MobileUI" unique_id=1747387343]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -300,27 +343,27 @@ offset_bottom = -40.0
 grow_vertical = 0
 alignment = 1
 
-[node name="MoveForward" type="Button" parent="UI/MobileUI/MoveButtons" unique_id=2006792811]
+[node name="MoveForward" type="Button" parent="UI/UIControl/MobileUI/MoveButtons" unique_id=2006792811]
 layout_mode = 2
 size_flags_horizontal = 4
 icon = ExtResource("31_mu8ct")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/MobileUI/MoveButtons" unique_id=1186233617]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/UIControl/MobileUI/MoveButtons" unique_id=1186233617]
 layout_mode = 2
 
-[node name="MoveLeft" type="Button" parent="UI/MobileUI/MoveButtons/HBoxContainer" unique_id=189692829]
+[node name="MoveLeft" type="Button" parent="UI/UIControl/MobileUI/MoveButtons/HBoxContainer" unique_id=189692829]
 layout_mode = 2
 icon = ExtResource("32_dpsds")
 
-[node name="MoveBack" type="Button" parent="UI/MobileUI/MoveButtons/HBoxContainer" unique_id=1257519766]
+[node name="MoveBack" type="Button" parent="UI/UIControl/MobileUI/MoveButtons/HBoxContainer" unique_id=1257519766]
 layout_mode = 2
 icon = ExtResource("33_05ahd")
 
-[node name="MoveRight" type="Button" parent="UI/MobileUI/MoveButtons/HBoxContainer" unique_id=1863791263]
+[node name="MoveRight" type="Button" parent="UI/UIControl/MobileUI/MoveButtons/HBoxContainer" unique_id=1863791263]
 layout_mode = 2
 icon = ExtResource("34_2k0bm")
 
-[node name="MagnetButton" type="Button" parent="UI/MobileUI" unique_id=340729597]
+[node name="MagnetButton" type="Button" parent="UI/UIControl/MobileUI" unique_id=340729597]
 custom_minimum_size = Vector2(150, 60)
 layout_mode = 1
 anchors_preset = 7
@@ -342,7 +385,7 @@ text = "Magnet"
 icon_alignment = 1
 expand_icon = true
 
-[node name="ScanButton" type="Button" parent="UI/MobileUI" unique_id=1553954459]
+[node name="ScanButton" type="Button" parent="UI/UIControl/MobileUI" unique_id=1553954459]
 custom_minimum_size = Vector2(150, 60)
 layout_mode = 1
 anchors_preset = 3
@@ -369,7 +412,13 @@ stream = ExtResource("24_y6deb")
 volume_db = -30.0
 autoplay = true
 
-[node name="GameController" parent="." unique_id=644326783 node_paths=PackedStringArray("magnetBoat", "cardPopup") instance=ExtResource("17_muem4")]
+[node name="GameController" parent="." unique_id=644326783 node_paths=PackedStringArray("magnetBoat", "cardPopup", "calendar", "uiControl", "fightClub") instance=ExtResource("17_muem4")]
 magnetBoat = NodePath("../MagnetBoat")
-cardPopup = NodePath("../UI/CardPopup")
-fightInventory = Array[ExtResource("26_dgi5k")]([ExtResource("27_yq6so"), ExtResource("27_yq6so"), ExtResource("26_2f3dj")])
+cardPopup = NodePath("../UI/UIControl/TripSummary")
+currentDay = 1
+fishInventory = Array[ExtResource("53_a6tpp")]([])
+calendar = NodePath("../UI/Calendar")
+uiControl = NodePath("../UI/UIControl")
+fightClub = NodePath("../UI/FightClub")
+totalEnergyBonus = 0
+money = 100
