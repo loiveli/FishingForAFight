@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="SmartAttack" format=3 uid="uid://f15gca80e6lk"]
-
-[ext_resource type="Script" uid="uid://d0l3pu4iu0p23" path="res://scripts/RobotFunctions/SmartAttack.gd" id="1_mgb5j"]
-
-[resource]
-script = ExtResource("1_mgb5j")
-name = "Smart attack"
-description = "Attacks the lowest health opponent"

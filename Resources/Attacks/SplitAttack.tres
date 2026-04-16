@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="SplitAttack" format=3 uid="uid://bsi0b0mdm2ckk"]
-
-[ext_resource type="Script" uid="uid://g3wdufh3e4o3" path="res://scripts/RobotFunctions/SplitAttack.gd" id="1_oqy7a"]
-
-[resource]
-script = ExtResource("1_oqy7a")
-name = "Split attack"
-description = "Splits attack between all opponents"
-metadata/_custom_type_script = "uid://g3wdufh3e4o3"

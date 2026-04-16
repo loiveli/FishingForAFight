@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://vgwrcfy1qawf"]
 
 [ext_resource type="Script" uid="uid://di3wk2v7awn3o" path="res://scripts/MagnetBoat.gd" id="1_tefeu"]
-[ext_resource type="Environment" uid="uid://jbptgqvstei3" path="res://scenes/main-environment.tres" id="1_yndf3"]
 [ext_resource type="Texture2D" uid="uid://cbk07cxgshg26" path="res://sprites/selector.png" id="2_tbgi4"]
 [ext_resource type="MeshLibrary" uid="uid://cckjfkhigvubt" path="res://seaofscrap_tiles.tres" id="4_tbgi4"]
 [ext_resource type="Script" uid="uid://c28cftb61fsff" path="res://scripts/SeaOfScrap.gd" id="6_eb6dy"]
@@ -13,46 +12,49 @@
 [ext_resource type="LabelSettings" uid="uid://nqb1oo5oymj" path="res://labelSettings.tres" id="8_trceg"]
 [ext_resource type="Texture2D" uid="uid://dvrcsxvqyy4gi" path="res://sprites/magnet.svg" id="9_a8y0u"]
 [ext_resource type="Resource" uid="uid://dcq3tp03mtpey" path="res://Resources/LootTables/T1LootTable.tres" id="9_muem4"]
-[ext_resource type="Script" uid="uid://c86ekq8jkn6a5" path="res://scripts/ScrapCells/ScrapCell.gd" id="10_05ahd"]
-[ext_resource type="PackedScene" uid="uid://dsscqa454d6xl" path="res://scenes/resource_card.tscn" id="10_jkv2x"]
-[ext_resource type="Script" uid="uid://dt3h82grt13rm" path="res://scripts/CardTier.gd" id="10_xe0uc"]
-[ext_resource type="Resource" uid="uid://hqqcm0f56xf8" path="res://Resources/CellTypes/SafeCell.tres" id="11_2k0bm"]
-[ext_resource type="Resource" uid="uid://be2dobewhsyto" path="res://Resources/CellTypes/EmptyCell.tres" id="12_svrew"]
-[ext_resource type="Resource" uid="uid://d0r1xbugu64f6" path="res://Resources/Tiers/Tier0.tres" id="12_upe5i"]
-[ext_resource type="Resource" uid="uid://d3q7usnamsrcm" path="res://Resources/CellTypes/T1LootCell.tres" id="13_dq3yq"]
-[ext_resource type="Resource" uid="uid://d2w68i3ctqlki" path="res://Resources/Tiers/Tier1.tres" id="13_whvey"]
-[ext_resource type="Resource" uid="uid://ye7wtacqo4nh" path="res://Resources/Tiers/Tier2.tres" id="14_0lddj"]
-[ext_resource type="Resource" uid="uid://efywi7lu0sde" path="res://Resources/CellTypes/T2LootCell.tres" id="14_2m5mw"]
 [ext_resource type="Script" uid="uid://c7d3dmly67ft0" path="res://scripts/inventory.gd" id="14_jkv2x"]
-[ext_resource type="Resource" uid="uid://dg7o13wmsfcq5" path="res://Resources/CellTypes/T3LootCell.tres" id="15_olej1"]
-[ext_resource type="Resource" uid="uid://cftq2c8rti1gc" path="res://Resources/CellTypes/T4LootCell.tres" id="16_ai81n"]
-[ext_resource type="PackedScene" uid="uid://bvukgnbl2hvx3" path="res://scenes/card_popup.tscn" id="16_whvey"]
-[ext_resource type="Resource" uid="uid://ck241gu2newpf" path="res://Resources/CellTypes/MagnetCell.tres" id="17_a6tpp"]
 [ext_resource type="PackedScene" uid="uid://blbhpc3wmekxd" path="res://scenes/game_controller.tscn" id="17_muem4"]
-[ext_resource type="Resource" uid="uid://li7ldmew2k1m" path="res://Resources/CellTypes/ChargeCell.tres" id="18_hou0l"]
-[ext_resource type="Resource" uid="uid://drb1ryidlspl" path="res://Resources/CellTypes/MoveCell.tres" id="19_kgdq1"]
 [ext_resource type="Script" uid="uid://djwov2u7ak007" path="res://scripts/UIinstructions.gd" id="21_8kpcj"]
 [ext_resource type="Texture2D" uid="uid://t4cg2mb5sgtw" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_w.png" id="22_lrmns"]
 [ext_resource type="Texture2D" uid="uid://d0q56a5wek438" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_a.png" id="23_sb4qk"]
 [ext_resource type="Texture2D" uid="uid://cw84y8qljg8u5" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_s.png" id="24_30kbt"]
-[ext_resource type="Resource" uid="uid://dbru1n2nwboqe" path="res://Resources/Tiers/Tier3.tres" id="24_olej1"]
 [ext_resource type="AudioStream" uid="uid://wvfsgkl8qob6" path="res://sounds/ambience.ogg" id="24_y6deb"]
-[ext_resource type="Resource" uid="uid://dhlvpetwassoc" path="res://Resources/Tiers/Tier4.tres" id="25_ai81n"]
 [ext_resource type="Texture2D" uid="uid://cft0uiiflp6tg" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_d.png" id="25_faesd"]
 [ext_resource type="Script" uid="uid://glwf6afe4due" path="res://scripts/ui.gd" id="26_ai81n"]
 [ext_resource type="FontFile" uid="uid://bekekmo1sb26a" path="res://kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="26_gskbp"]
 [ext_resource type="Texture2D" uid="uid://c2qyxmfrewxak" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_space.png" id="27_mu8ct"]
-[ext_resource type="PackedScene" uid="uid://b1e5pvovis00y" path="res://scenes/FightClub.tscn" id="28_a6tpp"]
 [ext_resource type="Texture2D" uid="uid://bbhemvbqd48a2" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_e.png" id="28_dpsds"]
 [ext_resource type="Texture2D" uid="uid://c5smvvg2cfelc" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Double/keyboard_tab.png" id="29_05ahd"]
-[ext_resource type="Script" uid="uid://dfgltwm20yw6b" path="res://scripts/mobile_ui.gd" id="30_gskbp"]
 [ext_resource type="Theme" uid="uid://bfuvwergfvwsu" path="res://Resources/UITheme.tres" id="30_kgdq1"]
-[ext_resource type="Texture2D" uid="uid://btbr8igxaptbo" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Vector/keyboard_arrow_up.svg" id="31_mu8ct"]
-[ext_resource type="Texture2D" uid="uid://kf07jc7ret0c" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_arrow_left.png" id="32_dpsds"]
-[ext_resource type="Texture2D" uid="uid://cero64g56b5vf" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_arrow_down.png" id="33_05ahd"]
-[ext_resource type="Texture2D" uid="uid://cmlnmwf3sqi46" path="res://kenney_input-prompts_1.4.1/Keyboard & Mouse/Default/keyboard_arrow_right.png" id="34_2k0bm"]
-[ext_resource type="PackedScene" uid="uid://cxmthkesnthes" path="res://scenes/calendar.tscn" id="49_hou0l"]
 [ext_resource type="Script" uid="uid://v8frponxyegr" path="res://scripts/Loot.gd" id="53_a6tpp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lg8b7"]
+sky_horizon_color = Color(0.67451, 0.682353, 0.698039, 1)
+sky_curve = 0.0175
+ground_bottom_color = Color(1, 1, 1, 1)
+ground_curve = 0.171484
+
+[sub_resource type="Sky" id="Sky_7bk1c"]
+sky_material = SubResource("ProceduralSkyMaterial_lg8b7")
+
+[sub_resource type="Environment" id="Environment_deyrk"]
+background_mode = 1
+background_color = Color(0.560784, 0.592157, 0.670588, 1)
+sky = SubResource("Sky_7bk1c")
+ambient_light_source = 2
+ambient_light_color = Color(0.662745, 0.694118, 0.772549, 1)
+ambient_light_energy = 0.75
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 0.25
+ssao_intensity = 0.5
+ssao_power = 100.0
+ssao_horizon = 0.1
+sdfgi_cascades = 1
+sdfgi_energy = 0.5
+glow_levels/2 = 0.6
+glow_levels/3 = 0.6
+glow_intensity = 2.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_kgdq1"]
 font = ExtResource("26_gskbp")
@@ -82,15 +84,15 @@ energyLabel = NodePath("../UI/UIControl/HBoxContainer/EnergyCount")
 transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0.1, 0)
 texture = ExtResource("2_tbgi4")
 
-[node name="View" type="Node3D" parent="." unique_id=998870865]
-transform = Transform3D(1.0000002, 0, 0, 0, 0.7406991, -0.6718368, 0, 0.67183703, 0.7406989, 0, 10, -10)
+[node name="View" type="Node3D" parent="MagnetBoat" unique_id=998870865]
+transform = Transform3D(1.0000002, 0, 0, 0, 0.7406991, -0.6718368, 0, 0.67183703, 0.7406989, 0, 10, -8)
 
-[node name="Camera" type="Camera3D" parent="View" unique_id=296047056]
+[node name="Camera" type="Camera3D" parent="MagnetBoat/View" unique_id=296047056]
 transform = Transform3D(-0.9999998, 0, 8.74228e-08, 0, 1.0000001, 0, -8.742276e-08, 0, -1.0000002, 0, 0, 0)
-environment = ExtResource("1_yndf3")
+environment = SubResource("Environment_deyrk")
 fov = 50.0
 
-[node name="SeaOfScrapGrid" type="GridMap" parent="." unique_id=2039709824 node_paths=PackedStringArray("toolTip")]
+[node name="SeaOfScrapGrid" type="GridMap" parent="." unique_id=2039709824]
 mesh_library = ExtResource("4_tbgi4")
 cell_size = Vector3(1, 1, 1)
 cell_center_x = false
@@ -103,9 +105,6 @@ script = ExtResource("6_eb6dy")
 highLootTable = ExtResource("7_jkv2x")
 lowLootTable = ExtResource("8_jbj1t")
 emptyLootTable = ExtResource("9_muem4")
-cellTypes = Array[ExtResource("10_05ahd")]([ExtResource("11_2k0bm"), ExtResource("12_svrew"), ExtResource("13_dq3yq"), ExtResource("14_2m5mw"), ExtResource("15_olej1"), ExtResource("16_ai81n"), ExtResource("17_a6tpp"), ExtResource("18_hou0l"), ExtResource("19_kgdq1")])
-tiers = Array[ExtResource("10_xe0uc")]([ExtResource("12_upe5i"), ExtResource("13_whvey"), ExtResource("14_0lddj"), ExtResource("24_olej1"), ExtResource("25_ai81n")])
-toolTip = NodePath("ToolTip")
 
 [node name="ToolTip" type="Label3D" parent="SeaOfScrapGrid" unique_id=490925016]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -123,18 +122,6 @@ shadow_opacity = 0.11
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=662846687]
 script = ExtResource("26_ai81n")
-
-[node name="Calendar" parent="UI" unique_id=665588515 groups=["Calendar"] instance=ExtResource("49_hou0l")]
-z_index = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -316.0
-offset_bottom = 80.0
-grow_horizontal = 0
-
-[node name="FightClub" parent="UI" unique_id=1034542465 groups=["FightClub"] instance=ExtResource("28_a6tpp")]
-visible = false
 
 [node name="UIControl" type="Control" parent="UI" unique_id=786671690 groups=["UIControl"]]
 layout_mode = 3
@@ -193,7 +180,6 @@ offset_top = 124.0
 offset_right = 1144.0
 offset_bottom = 604.0
 script = ExtResource("14_jkv2x")
-lootCardScene = ExtResource("10_jkv2x")
 magnetBoat = NodePath("../../../MagnetBoat")
 lowWeightHolder = NodePath("1WeightLoot")
 highWeightHolder = NodePath("2WeightLoot")
@@ -203,14 +189,6 @@ layout_mode = 2
 
 [node name="2WeightLoot" type="VBoxContainer" parent="UI/UIControl/Inventory" unique_id=1881598692]
 layout_mode = 2
-
-[node name="TripSummary" parent="UI/UIControl" unique_id=722414133 groups=["CardPopup"] instance=ExtResource("16_whvey")]
-visible = false
-layout_mode = 1
-offset_left = 56.0
-offset_top = 54.0
-offset_right = 1056.0
-offset_bottom = 554.0
 
 [node name="UIInstructions" type="VBoxContainer" parent="UI/UIControl" unique_id=1550378504]
 layout_mode = 1
@@ -315,98 +293,6 @@ layout_mode = 2
 text = "  Toggle controls"
 label_settings = SubResource("LabelSettings_2k0bm")
 
-[node name="MobileUI" type="Control" parent="UI/UIControl" unique_id=121278463 node_paths=PackedStringArray("move_up_btn", "move_down_btn", "move_left_btn", "move_right_btn", "scan_btn", "magnet_btn")]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("30_gskbp")
-move_up_btn = NodePath("MoveButtons/MoveForward")
-move_down_btn = NodePath("MoveButtons/HBoxContainer/MoveBack")
-move_left_btn = NodePath("MoveButtons/HBoxContainer/MoveLeft")
-move_right_btn = NodePath("MoveButtons/HBoxContainer/MoveRight")
-scan_btn = NodePath("ScanButton")
-magnet_btn = NodePath("MagnetButton")
-
-[node name="MoveButtons" type="VBoxContainer" parent="UI/UIControl/MobileUI" unique_id=1747387343]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = -188.0
-offset_right = 264.0
-offset_bottom = -40.0
-grow_vertical = 0
-alignment = 1
-
-[node name="MoveForward" type="Button" parent="UI/UIControl/MobileUI/MoveButtons" unique_id=2006792811]
-layout_mode = 2
-size_flags_horizontal = 4
-icon = ExtResource("31_mu8ct")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/UIControl/MobileUI/MoveButtons" unique_id=1186233617]
-layout_mode = 2
-
-[node name="MoveLeft" type="Button" parent="UI/UIControl/MobileUI/MoveButtons/HBoxContainer" unique_id=189692829]
-layout_mode = 2
-icon = ExtResource("32_dpsds")
-
-[node name="MoveBack" type="Button" parent="UI/UIControl/MobileUI/MoveButtons/HBoxContainer" unique_id=1257519766]
-layout_mode = 2
-icon = ExtResource("33_05ahd")
-
-[node name="MoveRight" type="Button" parent="UI/UIControl/MobileUI/MoveButtons/HBoxContainer" unique_id=1863791263]
-layout_mode = 2
-icon = ExtResource("34_2k0bm")
-
-[node name="MagnetButton" type="Button" parent="UI/UIControl/MobileUI" unique_id=340729597]
-custom_minimum_size = Vector2(150, 60)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -75.0
-offset_top = -108.0
-offset_right = 75.0
-offset_bottom = -48.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("26_gskbp")
-theme_override_font_sizes/font_size = 24
-text = "Magnet"
-icon_alignment = 1
-expand_icon = true
-
-[node name="ScanButton" type="Button" parent="UI/UIControl/MobileUI" unique_id=1553954459]
-custom_minimum_size = Vector2(150, 60)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -192.0
-offset_top = -108.0
-offset_right = -42.0
-offset_bottom = -48.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("26_gskbp")
-theme_override_font_sizes/font_size = 24
-text = "Scan"
-icon_alignment = 1
-expand_icon = true
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1122622244]
 stream = ExtResource("24_y6deb")
 volume_db = -30.0
@@ -414,11 +300,11 @@ autoplay = true
 
 [node name="GameController" parent="." unique_id=644326783 node_paths=PackedStringArray("magnetBoat", "cardPopup", "calendar", "uiControl", "fightClub") instance=ExtResource("17_muem4")]
 magnetBoat = NodePath("../MagnetBoat")
-cardPopup = NodePath("../UI/UIControl/TripSummary")
+cardPopup = NodePath("")
 currentDay = 1
 fishInventory = Array[ExtResource("53_a6tpp")]([])
-calendar = NodePath("../UI/Calendar")
+calendar = NodePath("")
 uiControl = NodePath("../UI/UIControl")
-fightClub = NodePath("../UI/FightClub")
+fightClub = NodePath("")
 totalEnergyBonus = 0
 money = 100
