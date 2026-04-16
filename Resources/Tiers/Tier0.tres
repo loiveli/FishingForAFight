@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CardTier" format=3 uid="uid://d0r1xbugu64f6"]
 
-[ext_resource type="Script" uid="uid://dt3h82grt13rm" path="res://scripts/CardTier.gd" id="1_fxveg"]
+[ext_resource type="Script" uid="uid://btjbl0kjapnmc" path="res://scripts/CardTier.gd" id="1_fxveg"]
 
 [resource]
 script = ExtResource("1_fxveg")
-tierColor = Color(1, 0.14901961, 0.0627451, 1)
+tierColor = Color(1, 0, 0, 1)

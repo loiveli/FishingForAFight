@@ -28,10 +28,7 @@ func _ready():
 	gridmap = self
 	initializeSeaOfScrap()
 	generateMeshLibrary()
-	plane = Plane(Vector3.UP, Vector3.ZERO)
-
-	if view_camera == null:
-		view_camera = get_viewport().get_camera_3d()
+	
 	
 	magnetShip = get_tree().get_first_node_in_group("MagnetBoat")
 	magnetShip.connect("lootScanned", scanHighlight)
@@ -51,30 +48,8 @@ func initializeSeaOfScrap():
 			cellMap[cellPos] = cellObject
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("click"):
-		var mouse_pos: Vector2 = get_viewport().get_mouse_position()
-		print("Mouse clicked at: %s" % mouse_pos)
-		var world_position = plane.intersects_ray(
-		view_camera.project_ray_origin(get_viewport().get_mouse_position()),
-		view_camera.project_ray_normal(get_viewport().get_mouse_position()))
-
-		var gridmap_position = Vector3(round(world_position.x), 0, round(world_position.z))
-
-		if toolTip == null:
-			toolTip = Label3D.new()
-			add_child(toolTip)
-		if cellMap.has(gridmap_position):
-			var cell = cellMap[gridmap_position as Vector3i]
-			toolTip.text = "%s\n%s" % [cell.cellName, cell.description]
-		else:
-			toolTip.text = "Empty Space\nNothing here."
-
-		toolTip.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-		toolTip.position = gridmap_position
-		toolTip.show()
-		var tween = create_tween()
-		tween.tween_property(toolTip, "position:y", toolTip.position.y + 1, 0.5).as_relative()
-		tween.tween_callback(toolTip.hide).set_delay(1.0)
+	return
+	
 		
 		
 

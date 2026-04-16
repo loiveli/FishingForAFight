@@ -1,18 +1,18 @@
-[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://dcq3tp03mtpey"]
+[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://6xnh7ojh20vj"]
 
-[ext_resource type="Script" uid="uid://v8frponxyegr" path="res://scripts/Loot.gd" id="1_m1n5w"]
-[ext_resource type="Script" uid="uid://b6x66w53yv4i1" path="res://scripts/LootTable.gd" id="2_6btyw"]
-[ext_resource type="Resource" uid="uid://ch3bd5pc6y424" path="res://Resources/Loot/Scrap.tres" id="2_j11yq"]
-[ext_resource type="Resource" uid="uid://mf0my107jsdq" path="res://Resources/Loot/Empty.tres" id="3_cnoxv"]
-[ext_resource type="Resource" uid="uid://dhs6am6o6w7te" path="res://Resources/Loot/SparePart.tres" id="4_lwyo5"]
-[ext_resource type="Resource" uid="uid://c6esdx8fvkq2m" path="res://Resources/Loot/Tier1Robot.tres" id="5_l4y4p"]
+[ext_resource type="Script" uid="uid://v8frponxyegr" path="res://scripts/Loot.gd" id="1_nj626"]
+[ext_resource type="Script" uid="uid://b6x66w53yv4i1" path="res://scripts/LootTable.gd" id="2_xmrwi"]
+[ext_resource type="Resource" uid="uid://ch3bd5pc6y424" path="res://Resources/Loot/Scrap.tres" id="4_alygw"]
+[ext_resource type="Resource" uid="uid://donxx126rjj5t" path="res://Resources/Loot/Transducer.tres" id="4_r5myg"]
+[ext_resource type="Resource" uid="uid://0nir3tvhhhoe" path="res://Resources/Loot/Battery.tres" id="5_fg083"]
+[ext_resource type="Resource" uid="uid://mf0my107jsdq" path="res://Resources/Loot/Empty.tres" id="6_5lp0x"]
 
 [resource]
-script = ExtResource("2_6btyw")
-loot = Dictionary[ExtResource("1_m1n5w"), int]({
-ExtResource("2_j11yq"): 4,
-ExtResource("3_cnoxv"): 8,
-ExtResource("4_lwyo5"): 4,
-ExtResource("5_l4y4p"): 4
+script = ExtResource("2_xmrwi")
+loot = Dictionary[ExtResource("1_nj626"), int]({
+ExtResource("4_alygw"): 10,
+ExtResource("6_5lp0x"): 4,
+ExtResource("4_r5myg"): 4,
+ExtResource("5_fg083"): 2
 })
 metadata/_custom_type_script = "uid://b6x66w53yv4i1"

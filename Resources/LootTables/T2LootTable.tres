@@ -1,20 +1,18 @@
-[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://d4db5v1dpvog1"]
+[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://jqkiyyyefiy4"]
 
-[ext_resource type="Script" uid="uid://v8frponxyegr" path="res://scripts/Loot.gd" id="1_nj626"]
-[ext_resource type="Resource" uid="uid://c6esdx8fvkq2m" path="res://Resources/Loot/Tier1Robot.tres" id="2_lb0aq"]
-[ext_resource type="Script" uid="uid://b6x66w53yv4i1" path="res://scripts/LootTable.gd" id="2_xmrwi"]
-[ext_resource type="Resource" uid="uid://dhs6am6o6w7te" path="res://Resources/Loot/SparePart.tres" id="3_uvobq"]
-[ext_resource type="Resource" uid="uid://ch3bd5pc6y424" path="res://Resources/Loot/Scrap.tres" id="4_alygw"]
-[ext_resource type="Resource" uid="uid://codnegt4gvpg6" path="res://Resources/Loot/Tier2Robot.tres" id="5_k08eq"]
-[ext_resource type="Resource" uid="uid://mf0my107jsdq" path="res://Resources/Loot/Empty.tres" id="6_5lp0x"]
+[ext_resource type="Script" uid="uid://v8frponxyegr" path="res://scripts/Loot.gd" id="1_m1n5w"]
+[ext_resource type="Script" uid="uid://b6x66w53yv4i1" path="res://scripts/LootTable.gd" id="2_6btyw"]
+[ext_resource type="Resource" uid="uid://ch3bd5pc6y424" path="res://Resources/Loot/Scrap.tres" id="2_j11yq"]
+[ext_resource type="Resource" uid="uid://mf0my107jsdq" path="res://Resources/Loot/Empty.tres" id="3_cnoxv"]
+[ext_resource type="Resource" uid="uid://donxx126rjj5t" path="res://Resources/Loot/Transducer.tres" id="4_l4y4p"]
+[ext_resource type="Resource" uid="uid://0nir3tvhhhoe" path="res://Resources/Loot/Battery.tres" id="5_1minf"]
 
 [resource]
-script = ExtResource("2_xmrwi")
-loot = Dictionary[ExtResource("1_nj626"), int]({
-ExtResource("2_lb0aq"): 6,
-ExtResource("3_uvobq"): 8,
-ExtResource("4_alygw"): 4,
-ExtResource("5_k08eq"): 1,
-ExtResource("6_5lp0x"): 1
+script = ExtResource("2_6btyw")
+loot = Dictionary[ExtResource("1_m1n5w"), int]({
+ExtResource("2_j11yq"): 6,
+ExtResource("3_cnoxv"): 2,
+ExtResource("4_l4y4p"): 6,
+ExtResource("5_1minf"): 6
 })
 metadata/_custom_type_script = "uid://b6x66w53yv4i1"

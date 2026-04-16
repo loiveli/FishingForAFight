@@ -1,7 +1,7 @@
 extends Resource
 class_name Loot
 
-enum LootType { ROBOT, SPAREPART, SCRAP }
+
 
 
 @export_subgroup("Visuals")
@@ -9,6 +9,8 @@ enum LootType { ROBOT, SPAREPART, SCRAP }
 @export var name: String
 
 @export_subgroup("Gameplay")
-@export var weight: int
-@export var type: LootType
+@export var weight: int = 1
+@export var value: int = 0
 @export var cardTier: CardTier
+@export var weapon: Weapon
+

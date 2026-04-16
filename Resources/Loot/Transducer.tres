@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Loot" format=3 uid="uid://donxx126rjj5t"]
+
+[ext_resource type="Script" uid="uid://v8frponxyegr" path="res://scripts/Loot.gd" id="1_a6jlh"]
+[ext_resource type="Resource" uid="uid://d2w68i3ctqlki" path="res://Resources/Tiers/Tier1.tres" id="1_cikye"]
+[ext_resource type="Texture2D" uid="uid://dp6alcsyll0qa" path="res://kenney_watercraft-pack/Previews/gate.png" id="3_cikye"]
+[ext_resource type="Script" uid="uid://di3fhkht1321o" path="res://scripts/Weapon.gd" id="3_g8cgn"]
+
+[sub_resource type="Resource" id="Resource_cikye"]
+script = ExtResource("3_g8cgn")
+damage = 2
+damageRange = 2
+metadata/_custom_type_script = "uid://di3fhkht1321o"
+
+[resource]
+script = ExtResource("1_a6jlh")
+texture = ExtResource("3_cikye")
+name = "Transducer"
+value = 5
+cardTier = ExtResource("1_cikye")
+weapon = SubResource("Resource_cikye")
+metadata/_custom_type_script = "uid://v8frponxyegr"

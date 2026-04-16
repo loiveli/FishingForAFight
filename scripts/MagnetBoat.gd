@@ -1,73 +1,62 @@
 extends Node3D
 
-@export var energyBar: TextureProgressBar
+class_name MagnetBoat
 
-var maxEnergy: int = 15
+
+@export_category("Gameplay Variables")
+@export var maxEnergy: int = 15
 var energy: int = maxEnergy
 
-@export var magnet: TextureRect
+var healthPoints: int = 3
 
-signal lootAdded(loot: Loot)
-signal lootDropped(loot: Loot)
-signal lootScanned(position: Vector3i)
-signal resetScan()
+@export var maxSpeed: float = 2
 
-var moveCount: int = 0
+var speed: float = 0
+@export_category("UI elements")
+@export var healthLabel: Label3D
 
-var scanned: bool = false
+
+@export_category("Collider")
+@export var collider: Area3D
 var canMove: bool = true
 
 var magnetActive: bool = false
 
+
+
+@export var scrapCannon: Node3D
 @export var inventory: Array[Loot] = []
-
 @export var seaOfScrap: GridMap
+@export var scrapProjectileScene: PackedScene
 
-@export var inventoryUI: VBoxContainer
 
-@export var energyLabel: Label
+
+var cellPosition: Vector3i
 
 
 func _ready():
-	magnet.visible = magnetActive
+	if seaOfScrap == null:
+		seaOfScrap = get_tree().get_first_node_in_group("SeaOfScrap") as GridMap
+	if not collider:
+		collider = $Area3D
+	collider.area_entered.connect(takeDamage)
+	healthLabel.text = "Health: %d" % healthPoints
 
 
-
-func _process(delta):
-
-	if canMove:
-		handle_input(delta)
-
-
-
-
-
-func handle_input(_delta):
-	
-	var movement := Vector3.ZERO
-
-	if Input.is_action_just_released("move_forward"):
-		movement = Vector3(0, 0, 1)
-	elif Input.is_action_just_released("move_back"):
-		movement = Vector3(0, 0, -1)
-	elif Input.is_action_just_released("move_left"):
-		movement = Vector3(1, 0, 0)
-	elif Input.is_action_just_released("move_right"):
-		movement = Vector3(-1, 0, 0)
-	
-	if movement != Vector3.ZERO:
-		moveBoat(movement)
-	if Input.is_action_just_released("magnet_toggle") && energy > total_inventory_weight():
-		magnetActive = !magnetActive
-		magnet.visible = magnetActive
-
-	if Input.is_action_just_released("scan_loot"):
-		emit_signal("lootScanned", position)
-		energy -= 1
-		energyBar.value = energy
-		energyLabel.text = str(energy)
-
-		scanned = true
+func takeDamage(area: Area3D):
+	print("Boat collided with ", area.name)
+	var parent = area.get_parent()
+	var amount = 0
+	if parent is ScrapProjectile:
+		var weapon = parent.weapon
+		if weapon and weapon.damage > 0:
+			amount = weapon.damage
+	elif parent is EnemyBoat:
+		amount = 1
+	healthPoints -= amount
+	if healthPoints <= 0:
+		healthPoints = 0
+	healthLabel.text = "Health: %d" % healthPoints	
 
 
 func total_inventory_weight():
@@ -86,60 +75,50 @@ func sortByWeight(lootA: Loot, lootB: Loot):
 
 func moveBoat(movement: Vector3):
 	var magnetCost = total_inventory_weight()
-	
-	var newCell: ScrapCell = seaOfScrap.cellMap.get(position+movement)
-	if newCell:
-		var total_Cost = magnetCost + newCell.moveCost
-		energy -= total_Cost
-		if energy <= 0:
-			energy = 0
-			magnetActive = false
-			magnet.visible = magnetActive
-		energyBar.value = energy
-		energyLabel.text = str(energy)
-		position += movement
-		processCell(newCell)
+	position += movement
+	var newCellPos: Vector3i = position.round()
+	if newCellPos != cellPosition:
+		cellPosition = newCellPos
+		var newCell: ScrapCell = seaOfScrap.cellMap.get(cellPosition) as ScrapCell
+
+		if newCell:
+			var total_Cost = magnetCost + newCell.moveCost
+			energy -= total_Cost
+			if energy <= 0:
+				energy = 0
+				magnetActive = false
+				
+
+			position += movement
+			processCell(newCell)
 	
 	
 
 
 
 func processCell(cell: ScrapCell):
+	if !magnetActive && energy < maxEnergy:
+		energy += 1
 	match cell.cellType:
 		ScrapCell.Type.EMPTY:
-			moveCount = 0
 			pass
 		ScrapCell.Type.LOOT:
-			moveCount = 0
 			processMagnet(cell.lootTable)
 		ScrapCell.Type.MOVEMENT:
-			if moveCount < 2:
-				position += cell.movement as Vector3
-				moveCount += 1
+			pass
 		ScrapCell.Type.SAFEZONE:
-			moveCount = 0
 			if inventory.size() > 0 || energy <= 0:
 				energy = maxEnergy
 				magnetActive = false
-				magnet.visible = magnetActive
-				GameController.bankLoot(inventory)
-				for loot in inventory:
-					emit_signal("lootDropped", loot)
-				inventory.clear()
-				if scanned:
-					scanned = false
-					emit_signal("resetScan")
-				
+				inventory.clear()	
 				
 		ScrapCell.Type.CHARGE:
-			moveCount = 0
 			energy = maxEnergy
-			energyBar.value = energy
 		ScrapCell.Type.MAGNET:
 			cell.dropLoot(inventory)
-			for loot in inventory:
-				emit_signal("lootDropped", loot)
 			inventory.clear()
+
+			
 			
 	
 	
@@ -148,25 +127,19 @@ func processMagnet(lootTable: LootTable):
 	if lootTable:
 		if energy > 0:
 			if magnetActive:
-				print("Loot table found for position ", position," ", lootTable)
 				var loot = lootTable.getRandomLoot()
 				if loot:	
-					print("Loot found: ", loot)
 					inventory.append(loot)
-					emit_signal("lootAdded", loot)
 			elif !magnetActive and inventory.size() > 0:
 				inventory.sort_custom(sortByWeight)
 				var droppedLoot = inventory.pop_front()
 				if lootTable:
 					lootTable.addLoot(droppedLoot, 1)
-					emit_signal("lootDropped", droppedLoot)
 		else:
 			magnetActive = false
-			magnet.visible = magnetActive
 			if inventory.size() > 0:
 				inventory.sort_custom(sortByWeight)
 				var droppedLoot = inventory.pop_front()
-				emit_signal("lootDropped", droppedLoot)
 				if lootTable:
 					lootTable.addLoot(droppedLoot, 1)
 	

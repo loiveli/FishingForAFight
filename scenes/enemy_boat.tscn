@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://gjyic2tj8vp0"]
+
+[ext_resource type="Script" uid="uid://n7fwlvfomwo4" path="res://scripts/EnemyBoat.gd" id="1_uyc1g"]
+[ext_resource type="PackedScene" uid="uid://jx0im6m72xm4" path="res://scenes/scrap_projectile.tscn" id="2_rxowg"]
+[ext_resource type="PackedScene" uid="uid://ct1m2dwa8acfu" path="res://kenney_conveyor-kit/Models/FBX format/robot-arm-b.fbx" id="2_uyc1g"]
+[ext_resource type="PackedScene" uid="uid://ev5ks04ldksf" path="res://kenney_watercraft-pack/Models/FBX format/boat-fishing-small.fbx" id="3_rxowg"]
+[ext_resource type="FontFile" uid="uid://bekekmo1sb26a" path="res://kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="5_rxowg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lrmns"]
+size = Vector3(0.5, 0.5, 1)
+
+[node name="EnemyBoat" type="Node3D" unique_id=2096037630 node_paths=PackedStringArray("healthLabel", "collider", "scrapCannon") groups=["EnemyBoat", "MagnetBoat", "PlayerBoat"]]
+script = ExtResource("1_uyc1g")
+healthLabel = NodePath("HealthLabel")
+collider = NodePath("Area3D")
+scrapCannon = NodePath("robot-arm-b")
+scrapProjectileScene = ExtResource("2_rxowg")
+
+[node name="robot-arm-b" parent="." unique_id=520621654 instance=ExtResource("2_uyc1g")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.5, 0)
+
+[node name="MagnetBoatModel" parent="." unique_id=817961757 instance=ExtResource("3_rxowg")]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1978069914]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2109715315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_lrmns")
+
+[node name="HealthLabel" type="Label3D" parent="." unique_id=2088446519]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7998899, 0.29403484)
+billboard = 1
+text = "Health: 3"
+font = ExtResource("5_rxowg")

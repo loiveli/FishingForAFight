@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Loot" format=3 uid="uid://0nir3tvhhhoe"]
+
+[ext_resource type="Resource" uid="uid://ye7wtacqo4nh" path="res://Resources/Tiers/Tier2.tres" id="1_76cij"]
+[ext_resource type="Script" uid="uid://v8frponxyegr" path="res://scripts/Loot.gd" id="1_or16t"]
+[ext_resource type="Script" uid="uid://di3fhkht1321o" path="res://scripts/Weapon.gd" id="2_btciu"]
+[ext_resource type="Texture2D" uid="uid://ciqigang843fi" path="res://kenney_prototype-kit/Previews/crate.png" id="2_jtc4a"]
+
+[sub_resource type="Resource" id="Resource_jtc4a"]
+script = ExtResource("2_btciu")
+damage = 3
+damageRange = 2
+metadata/_custom_type_script = "uid://di3fhkht1321o"
+
+[resource]
+script = ExtResource("1_or16t")
+texture = ExtResource("2_jtc4a")
+name = "Battery"
+weight = 2
+value = 10
+cardTier = ExtResource("1_76cij")
+weapon = SubResource("Resource_jtc4a")
+metadata/_custom_type_script = "uid://v8frponxyegr"

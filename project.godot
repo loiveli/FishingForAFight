@@ -25,7 +25,6 @@ config/icon="res://icon.png"
 [autoload]
 
 Audio="*res://scripts/audio.gd"
-GameController="*uid://blbhpc3wmekxd"
 
 [editor]
 
@@ -38,6 +37,9 @@ CardPopup=""
 Calendar=""
 FightClub=""
 UIControl=""
+EnemyBoat=""
+PlayerBoat=""
+SeaOfScrap=""
 
 [input]
 

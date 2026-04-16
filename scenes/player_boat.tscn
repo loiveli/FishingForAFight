@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://bgv51xhv5pevk"]
+
+[ext_resource type="Script" uid="uid://hk7we3kpjx03" path="res://scripts/PlayerBoat.gd" id="1_gc3gk"]
+[ext_resource type="PackedScene" uid="uid://jx0im6m72xm4" path="res://scenes/scrap_projectile.tscn" id="2_0jmlo"]
+[ext_resource type="PackedScene" uid="uid://ct1m2dwa8acfu" path="res://kenney_conveyor-kit/Models/FBX format/robot-arm-b.fbx" id="3_5d2fc"]
+[ext_resource type="PackedScene" uid="uid://ev5ks04ldksf" path="res://kenney_watercraft-pack/Models/FBX format/boat-fishing-small.fbx" id="4_upd5b"]
+[ext_resource type="Texture2D" uid="uid://cbk07cxgshg26" path="res://sprites/selector.png" id="5_jg234"]
+[ext_resource type="FontFile" uid="uid://bekekmo1sb26a" path="res://kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="6_k7mqa"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lg8b7"]
+sky_horizon_color = Color(0.67451, 0.682353, 0.698039, 1)
+sky_curve = 0.0175
+ground_bottom_color = Color(1, 1, 1, 1)
+ground_curve = 0.171484
+
+[sub_resource type="Sky" id="Sky_7bk1c"]
+sky_material = SubResource("ProceduralSkyMaterial_lg8b7")
+
+[sub_resource type="Environment" id="Environment_deyrk"]
+background_mode = 1
+background_color = Color(0.560784, 0.592157, 0.670588, 1)
+sky = SubResource("Sky_7bk1c")
+ambient_light_source = 2
+ambient_light_color = Color(0.662745, 0.694118, 0.772549, 1)
+ambient_light_energy = 0.75
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 0.25
+ssao_intensity = 0.5
+ssao_power = 100.0
+ssao_horizon = 0.1
+sdfgi_cascades = 1
+sdfgi_energy = 0.5
+glow_levels/2 = 0.6
+glow_levels/3 = 0.6
+glow_intensity = 2.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lrmns"]
+size = Vector3(0.5, 0.5, 1)
+
+[node name="MagnetBoat" type="Node3D" unique_id=2096037630 node_paths=PackedStringArray("view_camera", "healthLabel", "collider", "scrapCannon") groups=["MagnetBoat", "PlayerBoat"]]
+script = ExtResource("1_gc3gk")
+view_camera = NodePath("View/Camera")
+healthLabel = NodePath("HealthLabel")
+collider = NodePath("Area3D")
+scrapCannon = NodePath("robot-arm-b")
+scrapProjectileScene = ExtResource("2_0jmlo")
+
+[node name="robot-arm-b" parent="." unique_id=520621654 instance=ExtResource("3_5d2fc")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.5, 0)
+
+[node name="MagnetBoatModel" parent="." unique_id=817961757 instance=ExtResource("4_upd5b")]
+
+[node name="Highlight" type="Sprite3D" parent="." unique_id=1822583526]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0.1, 0)
+texture = ExtResource("5_jg234")
+
+[node name="View" type="Node3D" parent="." unique_id=257642028]
+transform = Transform3D(1.0000002, 0, 0, 0, 0.7406991, -0.6718368, 0, 0.67183703, 0.7406989, 0, 10, -8)
+
+[node name="Camera" type="Camera3D" parent="View" unique_id=269311110]
+transform = Transform3D(-0.9999998, 0, 8.74228e-08, 0, 1.0000001, 0, -8.742276e-08, 0, -1.0000002, 0, 0, 0)
+environment = SubResource("Environment_deyrk")
+fov = 50.0
+
+[node name="Area3D" type="Area3D" parent="." unique_id=260565983]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2109715315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_lrmns")
+
+[node name="HealthLabel" type="Label3D" parent="." unique_id=972421731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7998899, 0.29403484)
+billboard = 1
+text = "Health: 3"
+font = ExtResource("6_k7mqa")

@@ -9,10 +9,11 @@ func getRandomLoot() -> Loot:
 	for lootItem in loot:
 		for i in range(loot[lootItem]):
 			lootArray.append(lootItem)
-	print("Total loot weight: ", totalWeight)
-	print("Loot array size: ", lootArray.size())
+
 	if lootArray.size() > 0:
-		return lootArray.pick_random()
+		var randomLoot = lootArray.pick_random()
+		if randomLoot.cardTier.tierIndex >=0:
+			return randomLoot
 	return null
 
 func addLoot(droppedLoot: Loot, count: int):
